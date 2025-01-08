@@ -119,7 +119,6 @@ class searchEngine
 let searchEng : searchEngine = new searchEngine();
 
 export interface UserState {
-    category : String;
     firstValue : boolean;
     navigation : Array<String>;
     searchFocus : boolean;
@@ -129,7 +128,6 @@ export interface UserState {
 }
 
 const initialState : UserState = {
-    category : '',
     firstValue : true,
     navigation : [],
     searchFocus : false,
@@ -167,9 +165,6 @@ export const userSlice = createSlice({
   name : "user",
   initialState,
   reducers: {
-    setCategory(state, payload){
-        state.category = payload.payload;
-    },
     setNavigation(state, payload){
         state.navigation = payload.payload;
         // console.log(state.navigation)
@@ -185,6 +180,6 @@ export const userSlice = createSlice({
   
 });
 
-export const { setCategory, setNavigation, setSearchFocus, setSearchText } = userSlice.actions;
+export const { setNavigation, setSearchFocus, setSearchText } = userSlice.actions;
 
 export default userSlice.reducer;

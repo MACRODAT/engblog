@@ -4,22 +4,24 @@ import { request , gql, GraphQLClient } from 'graphql-request';
 
 
 const graphqlAPI : string = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT as string;
-// console.log(graphqlAPI)
+// console.log(graphqlAPI)\
 
-let lastCategory : string = '';
-let setLastCategory = (cat) => { lastCategory = cat };
-export {
-    lastCategory, setLastCategory
-}
+let linkDict = new Map<String, Sstring>()
 
-export const getCategories = async () => {
+export const compileNavigationAlgoLinks = async () => {
     const query = gql`
         query MyQuery {
-            categories {
-                name
-                description
-                featureImage {
-                    url
+            posts(first:5000){
+                link
+            }
+            postsConnection(first:5000) {
+                edges {
+                    node {
+                        link
+                        children {
+                            link
+                        }
+                    }
                 }
             }
         }
@@ -27,7 +29,26 @@ export const getCategories = async () => {
 
     const graphQLClient = new GraphQLClient(graphqlAPI);
     const  result =  graphQLClient.request(query);
-    return result;
+    return result.then((_res) => {
+        // console.log(_res)
+        let dict = new Map<String, Array<String>>()
+        _res.posts.forEach((element:any) => {
+            dict.set(element.link, "");
+            // console.log(element.name)
+        });
+        let edges = Array.from(_res.postsConnection.edges);
+        edges.forEach(item => {
+            let name = item.node.link;
+            if (item.node.children)
+            {
+                let children = Array.from(item.node.children);
+                children.forEach(c => {
+                    dict.set(name, [...dict.get(name), (c.link)])
+                })
+            }
+        });
+        return dict;
+    }, (_err) => {console.log("error -> " + _err); return []; });
 }
 
 export const compileNavigationAlgo = async () => {
@@ -35,6 +56,7 @@ export const compileNavigationAlgo = async () => {
         query MyQuery {
             posts(first:5000){
                 name
+                link
             }
             postsConnection(first:5000) {
                 edges {
@@ -56,17 +78,21 @@ export const compileNavigationAlgo = async () => {
         let dict = new Map<String, Array<String>>()
         _res.posts.forEach((element:any) => {
             dict.set(element.name, "");
+            linkDict.set(element.name, element.link);
             // console.log(element.name)
         });
         let edges = Array.from(_res.postsConnection.edges);
         edges.forEach(item => {
             let name = item.node.name;
-            let children = Array.from(item.node.children);
-            children.forEach(c => {
-                dict.set(name, [...dict.get(name), (c.name)])
-            })
-        })
-
+            if (item.node.children)
+            {
+                let children = Array.from(item.node.children);
+                children.forEach(c => {
+                    dict.set(name, [...dict.get(name), (c.name)])
+                })
+            }
+        });
+        // console.log(_res)
         return dict;
     }, (_err) => {console.log("error -> " + _err); return []; });
 }
@@ -76,7 +102,7 @@ export async function getPostDetails(slug : String){
     const graphQLClient = new GraphQLClient(graphqlAPI);
     const query = gql`
             query GetPostDetails($slug : String!) {
-                posts(where: { name : $slug}) {
+                posts(where: { link : $slug}) {
                     createdAt
                     name
                     link
@@ -97,16 +123,17 @@ export async function getPostDetails(slug : String){
 
     const  result =  graphQLClient.request(query, { slug : slug });
     return result.then((_res) => {
+        // console.log(_res);
         return _res.posts[0];
     }, (_err) => console.log("error -> " + _err));
 }
 
-export async function getIndexPostAlgo(){
+export async function getIndexPosts(){
     // console.log(lastCategory)
     const graphQLClient = new GraphQLClient(graphqlAPI);
     const query = gql`
             query GetPostMain() {
-                posts(where: {link: "indexpostalgo"}) {
+                posts(where: {link: "mainfreelancing"}) {
                     createdAt
                     name
                     link
@@ -130,88 +157,7 @@ export async function getIndexPostAlgo(){
         return _res.posts[0];
     }, (_err) => console.log("error -> " + _err));
 }
-export async function getIndexKickstart(){
-    // console.log(lastCategory)
-    const graphQLClient = new GraphQLClient(graphqlAPI);
-    const query = gql`
-            query GetPostMain() {
-                posts(where: {link: "indexkickstart"}) {
-                    createdAt
-                    name
-                    link
-                    content
-                    excerpt
-                    featureImage {
-                      url
-                    }
-                    children {
-                        name
-                        excerpt
-                        link
-                    }
-                }
-            }
-    `;
 
-
-    const  result =  graphQLClient.request(query);
-    return result.then((_res) => {
-        // console.log(_res)
-        return _res.posts[0];
-    }, (_err) => console.log("error -> " + _err));
-}
-export async function getIndexProjects(){
-    // console.log(lastCategory)
-    const graphQLClient = new GraphQLClient(graphqlAPI);
-    const query = gql`
-            query GetPostMain() {
-                posts(where: {link: "indexprojects"}) {
-                    createdAt
-                    name
-                    link
-                    content
-                    excerpt
-                    featureImage {
-                      url
-                    }
-                    children {
-                        name
-                        excerpt
-                        link
-                    }
-                }
-            }
-    `;
-
-
-    const  result =  graphQLClient.request(query);
-    return result.then((_res) => {
-        // console.log(_res)
-        return _res.posts[0];
-    }, (_err) => console.log("error -> " + _err));
-}
-export async function getIndexDeepLearning(){
-    // console.log(lastCategory)
-    const graphQLClient = new GraphQLClient(graphqlAPI);
-    const query = gql`
-            query GetPostMain() {
-                posts(where: {link: "indexdeeplearning"}) {
-                    createdAt
-                    name
-                    link
-                    content
-                    excerpt
-                    featureImage {
-                      url
-                    }
-                }
-            }
-    `;
-
-
-    const  result =  graphQLClient.request(query);
-    return result.then((_res) => {
-        // console.log(_res)
-        return _res.posts[0];
-    }, (_err) => console.log("error -> " + _err));
+export {
+    linkDict
 }

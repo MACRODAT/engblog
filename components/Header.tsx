@@ -33,11 +33,11 @@ const Header = ({scrolled} :
 		}
 	}
 
-	let ele = () => {
+	let getHeaderTitleStyle = () => {
 		
 		if (scrolled) 
 		{ 
-			return " mr-7 mt-2 md:mt-1 md:mb-1 animateHeader \
+			return "mx-8 mt-2 md:mt-1 md:mb-1 animateHeader ita flex-1 text-xl md:text-2xl  \
 				\
 				\
 				\
@@ -46,8 +46,8 @@ const Header = ({scrolled} :
 			" 
 		}
 		else{
-			return " mr-7 mt-2 md:mt-1 md:mb-1 \
-				uppercase text-xl md:text-3xl font-thin \
+			return "mr-10 ml-10 mt-2 md:mt-1 md:mb-1 ita \
+				uppercase text-xl md:text-2xl font-thin \
 				transition ease-out duration-100 \
 				hover:ease-in hover:scale-105 \
 				motion-safe  \
@@ -72,19 +72,6 @@ const Header = ({scrolled} :
 		}
 	}, [user]);
 
-	// auth.onAuthStateChanged((user) => {
-	// 	if (user == undefined || user == null){
-	// 	  setLoggedInState(false);
-	// 	  dispatch(setLogin(false));
-	// 	  dispatch(setUserFromGoogleAuth(null));
-	// 	}
-	// 	else{
-	// 		setLoggedInState(true);
-	// 		dispatch(setLogin(true));
-	// 		dispatch(setUserFromGoogleAuth(user));
-	// 	}
-	// })
-
 	useEffect(() => {
 		setLoggedInState(loggedIn_)
 	}, [loggedIn_]);
@@ -94,51 +81,47 @@ const Header = ({scrolled} :
 
     return (
         <div id='header'
-			className={"mr-0 pr-0 flex justify-center items-center " + 
-            	(scrolled ? 'backdrop-blur-sm drop-shadow-md brightness-50' : 'bg-transparent')}
+			className={"mr-0 p-0 flex justify-center items-center content-center " + 
+            	(scrolled ? 'backdrop-blur-sm drop-shadow-md brightness-100 border-b-4' : 'bg-transparent')}
           > 
-				{
-					theme == 'dark' ? 
-					<i 	
-							className='hidden md:block fa-solid fa-sun mx-1 my-0 cursor-pointer hover:animate-pulse'
-							onClick={switchTheme}> 
-					</i>
-					:
-					<i className='hidden md:block fa-solid fa-moon mx-1 my-0 text-md cursor-pointer hover:animate-pulse' onClick={switchTheme}> </i>
-
-				}
-				<h1 className={ele()}>
-					NESD ALGORITHMS 
+				<div 
+						onClick={switchTheme}
+						className='hidden md:block mx-1 my-0 cursor-pointer hover:animate-pulse w-2'>
+						<i 	
+								className={theme=='dark' ? "fa-solid fa-sun" : "fa-solid fa-moon"}
+								onClick={switchTheme}> 
+						</i>
+				</div>
+				<h1 className={getHeaderTitleStyle()}>
+					The engineer blog
 				</h1>
 				
 				<h3 className={ 
 						scrolled ? 
 							'flex-initial text-end  font-thin p-2 \
-							\
 							cursor-pointer \
 							transition ease-out duration-100 \
 							hover:ease-out hover:bg-indigo-900/50 hover:border-dashed hover:border-orange-900 hover:text-slate-50 \
 							' 
 							:  
-							('flex-initial text-end cursor-pointer font-thin p-2 \
+							('flex-initial text-end cursor-pointer p-2 m-0 \
 							border-indigo-500  border-b \
-							rounded-l-full \
 							transition ease-out duration-100 \
 							hover:ease-in  hover:border-indigo-500 \
 							'
-							.concat(loggedInState ? 'bg-sky-800' : '')
-							.concat(theme == 'light' ? 'hover:text-slate-900 hover:bg-indigo-200 bg-indigo-50' : 'hover-text-slate-50 bg-indigo-700 hover:bg-indigo-900')
+							.concat(loggedInState ? 'bg-sky-100' : '')
+							.concat(theme == 'light' ? 'hover:text-slate-900 hover:bg-indigo-100 bg-white' : 'hover-text-slate-50 bg-black hover:bg-sky-900')
 							)}>
 						{
 							loggedInState ? 
 							(
 								<div onClick={() => {router.push('/account')}}>
-									<i className='fa fa-md fa-person-shelter mr-2' />
-									ACCOUNT
+									<i className='fa fa-md fa-person-shelter mx-2' />
+									My account
 								</div>
 							):
 							(
-								<div onClick={loginFunction}><i className='fa fa-sm fa-user' /> LOGIN</div>
+								<div onClick={loginFunction}><i className='fa fa-sm fa-user' /> Login </div>
 							)
 						}
 				</h3>

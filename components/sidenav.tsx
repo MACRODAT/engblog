@@ -3,6 +3,8 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
+import { linkDict } from '../services';
+import { mainpages } from '../mock/mainpages';
 
 
 let selectedNav_ = "";
@@ -20,24 +22,19 @@ export default function SideNav(){
 
   useEffect(() => {
     setNav(nav_)
-  }, [nav_])
+  }, [nav_]);
 
-  let category = useSelector(state => state.user.category);
   // let navigation = useSelector(state => state.user.navigation);
   let router = useRouter();
   
   let compiler = () => {
-    // navigation = useSelector(state => state.user.navigation);
-    category = useSelector(state => state.user.category);
-    
-    if (category == ''){
-      return ''
-    }
+    // console.log(nav_);
     if (nav === null || nav === undefined || nav == [] || nav == {}){
       return ''
     }else{
       try {
-        let navs = Array.from(nav_.get(category));
+        // let navs = nav_;
+        let navs = Array.from(nav_.keys());
         navs.reverse();
 
         let findAllNodes = (whichPost) => {
@@ -61,16 +58,15 @@ export default function SideNav(){
         
         let builder = (el) =>
             { 
+                  // console.log(el);
                   if (menus.get(el) == undefined){
                     menus.set(el , false); 
                   }
+                  let link = linkDict.get(el);
                   let children = findAllNodes(el);
                   // console.log(children)
                   return <li key={el} className={
-                                    el == selectedNav_ ?  
-                                    'w-full rounded-md ml-2 grid grid-cols-5 bg-slate-600/40'
-                                    :
-                                    'w-full rounded-md ml-2 grid grid-cols-5'
+                                    'w-full pl-5 grid grid-cols-5'
                                   }
                             onClick={(e) => {
                               menus = menus.set(el, !menus.get(el));
@@ -79,15 +75,41 @@ export default function SideNav(){
                               setMenus(new Map(menus));
                               e.stopPropagation();
                             }}
+                            
                         >
                           <p 
-                            className='col-span-4 cursor-pointer hover:bg-slate-400 rounded-md p-1 text-left mx-1'
+                            className={
+                              el == selectedNav_ ?  
+                              'col-span-4 cursor-pointer p-1 text-left mx-1 underline decoration-dashed'
+                              :
+                              'col-span-4 cursor-pointer p-1 text-left mx-1'
+                            }
                             onClick={(e) => {
                               // navigate to this link
-                              router.push('/post/' + el)
+                              router.push('/post/' + link)
                               selectedNav_ = el;
                               e.stopPropagation()
-                            }}>
+                            }}
+                            onMouseOver={ (e) => {
+                              if (el != selectedNav_)
+                              {
+                                e.currentTarget.classList.add('decoration-solid');
+                                e.currentTarget.classList.add('underline');
+                                e.currentTarget.classList.remove('no-underline');
+                              }
+                              e.stopPropagation();
+                            }}
+                            onMouseLeave={ (e) => {
+                              if (el != selectedNav_)
+                              {
+                                e.currentTarget.classList.remove('decoration-solid');
+                                e.currentTarget.classList.remove('underline');
+                                e.currentTarget.classList.add('no-underline');
+                              }
+                              
+                              e.stopPropagation();
+                            }}
+                            >
                             {el}
                           </p>
 
@@ -100,12 +122,12 @@ export default function SideNav(){
                             :
                             <i className='col-span-1 p-0 m-0 text-base cursor-pointer fa-solid fa-angle-up mx-2 
                                           iconaligncenter'
-                            ></i> : ''
+                            ></i> : <i className='col-span-1 p-0 m-0'></i>
                           }
 
                           {
                             menus.get(el) ?
-                              <ul className='col-span-5 new-box'>
+                              <ul className='col-span-5 '>
                               {
                                 children.map((el2) => {
                                   return builder(el2)
@@ -117,7 +139,14 @@ export default function SideNav(){
                           }
                     </li>
             }
-        return navs.map((el) => builder(el))
+        return navs.map((el) => {
+          let my_link = linkDict.get(el);
+          if (mainpages.includes(my_link))
+          {
+            return builder(el);
+          }
+          return null;
+        })
       } catch (error) {
         // console.log(error)
         return ''
@@ -127,15 +156,15 @@ export default function SideNav(){
  
   return (
     <div id="sidenav"
-        className='bg-p border border-slate-200/30 fg-p text-sm md:text-lg
-                p-1 m-1 rounded-l-md text-center
+        className=' border border-slate-200/30 fg-p text-sm md:text-lg
+                p-2 m-1 text-center
                 right-0 mr-0
                 w-full'
         >
             {
               (nav === null || nav === undefined) ? '...' : (
-                <ul className='marker:text-sky-400 transition-all ease-in duration-150'>
-                    <li key={'1'} id='focused' className='hover:bg-slate-400 bg-slate-200'>{category}</li>
+                <ul className='marker:text-sky-700 transition-all p-1 ease-in duration-150'>
+                    <li key={'1'} id='focused' className='hover:underline hover:decoration-solid fg-p font-bold'>Blog Content</li>
                     {
                       compiler()
                     }

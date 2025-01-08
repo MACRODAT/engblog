@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
-import { compileNavigationAlgo, getCategories, getPostDetails } from '../../services';
+import { compileNavigationAlgo, compileNavigationAlgoLinks, getCategories, getPostDetails, linkDict } from '../../services';
 
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm';
@@ -21,12 +21,15 @@ import Link from 'next/link';
 import { isDocumentLiked, likeDocument } from '../../mock/firebase';
 import { Disclosure } from '@headlessui/react';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 // import { getPostDetails, getPosts } from '../../services'
 
 import Carousel from 'react-gallery-carousel';
 import 'react-gallery-carousel/dist/index.css';
 
 import { writeFile, writeFileSync } from 'fs';
+import { mainpages } from '../../mock/mainpages';
+import { resolveReadonlyArrayThunk } from 'graphql';
 
 const customStylingCode : React.CSSProperties = {
   overflow: 'hidden !important'
@@ -334,6 +337,54 @@ const PostDetails = ({ post} : {post : any}) => {
                 <hr className='w-full opacity-0' />
                 <h6 {...otherprops}>{children}</h6>
               </>
+    },
+    li({children, ...otherprops}){
+      
+      // const isTopLevelOl = !node?.parent || node?.parent?.type !== "list";
+      // console.log(otherprops)
+      return  <>
+                <li className='w-full p-0' {...otherprops} >{children}</li>
+              </>
+    },
+    ol({children, className, node, ...rest}){
+      // const isTopLevelOl = !node?.parent || node?.parent?.type !== "list";
+      // console.log(children)
+      let fontSize = "text-sm font-thin";
+      if (rest.depth == 0)
+      {
+        fontSize = "text-lg font-bold";
+      }
+      else if (rest.depth == 1)
+      {
+        fontSize = "text-base font-light";
+      }
+      if (children.length > 3)
+      {
+        if (rest.depth > 1)
+        {
+            return <>
+                      {/* <hr className='w-full opacity-40' /> */}
+                      <ol {...rest} className={'grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6 x-full ' + fontSize}>
+                        {children}
+                      </ol>
+                    </>
+        }
+        else{
+            return <>
+                      {/* <hr className='w-full opacity-40' /> */}
+                      <ol {...rest} className={'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 x-full ' + fontSize}>
+                        {children}
+                      </ol>
+                    </>
+        }
+      }
+      {
+        return <>
+                  <ol {...rest} className={'w-full ' + fontSize}>
+                    {children}
+                  </ol>
+               </>
+      }
     }
   };
 
@@ -345,19 +396,45 @@ const PostDetails = ({ post} : {post : any}) => {
     setScreenWidth(window.innerWidth)
   });
 
+  // console.log(post);
+
+  // Convert the string to a Date object
+  const date = new Date(post.createdAt);
+
+  // Format the date
+  const options: Intl.DateTimeFormatOptions = { weekday: 'long', year: '2-digit', month: '2-digit', day: '2-digit' };
+  const formattedDate = date.toLocaleDateString('en-GB', options);
+
+  // Custom formatting: Reorder to "Friday 07/01/25"
+  const parts = formattedDate.split(", ");
+  const finalDate = `${parts[0]} ${parts[1].replace(/\//g, "/")}`;
 
   return (
     <div className={theme == 'light' ? 
-                  'bg-slate-100 my-20 pb-40 px-4 py-4 ml-2 w-full'
+                  'bg-p fg-p pb-40 py-3 px-4 ml-2 w-full border-t-2 container'
                   :
-                  'bg-zinc-900/30 my-20 pb-40 px-4 py-4 ml-2 min-width-[80%] w-full'
+                  'bg-p fg-p pb-40 py-3 px-4 ml-2 w-full border-t-2 container'
                 }
                   >
-
-          <h1 className='text-2xl md:text-4xl text-center'>{post.name}</h1>  
-          <h2 className='text-xl md:text-2xl italic text-center'> {post.excerpt}</h2>  
           {
-              post.postdifficulty != 'NONE' ?
+              showImage ?
+              <span className="flex justify-center mx-auto md:float-left md:mr-10 mb-1">
+                <Image src={post.featureImage.url} width={256} height={256} style={{objectFit: "cover"}}  alt="" />
+                {/* <img className='colorize w-[20%] md:w-[30%] float-right mr-10' src={post.featureImage.url} alt='' /> */}
+              </span>
+              :
+              ''
+            }
+          <span className="text-center p-0 m-0">
+            <h1 className='text-3xl ita md:text-5xl lg:text-6xl text-center my-5 md:mb-4'>{post.name}</h1>
+            <h2 className='text-xl md:text-2xl italic'>
+              <span className="text-lg md:text-xl font-light opacity-50 m-0 mx-1 p-0 not-italic">#</span> 
+              {post.excerpt}
+            </h2>  
+            <h4 className='text-lg md:text-lg font-light opacity-50 '> Written on {finalDate}</h4>  
+          </span>
+          {
+              post.postdifficulty != 'none' && post.postdifficulty != '' ?
               <button 
                     className={theme == 'light' ? 
                     'rounded-lg bg-slate-200/60 border border-slate-300 p-2 float-right h-20'
@@ -423,15 +500,10 @@ const PostDetails = ({ post} : {post : any}) => {
           }
           
 
-          <hr className='my-4' />
-          {
-            showImage ?
-            <img className='colorize w-[20%] md:w-[30%] float-left mr-10 mb-5' src={post.featureImage.url} alt='' />
-            :
-            ''
-          }
-          <div id="contentpost" className='my-4
+          {/* <hr className='my-1' /> */}
+          <div id="contentpost" className='my-1
                           '>
+            
             <ReactMarkdown children={post.content} 
                 remarkPlugins={[[remarkToc, {ordered: true}], remarkGfm, remarkHint, remarkMath ]} 
                 rehypePlugins={[rehypeRaw, [rehypeKatex, {strict : false}]]}
@@ -469,7 +541,7 @@ const PostDetails = ({ post} : {post : any}) => {
                                       className='p-2 m-1 text-center bg-sky-300/30 
                                                   rounded-full block min-w-[20%]
                                                   '
-                                      onClick={() => rt.push('/post/' + c.name)}
+                                      onClick={() => rt.push('/post/' + linkDict.get(c.name))}
                                       >
                                     Visit
                                   </button>
@@ -490,9 +562,7 @@ const PostDetails = ({ post} : {post : any}) => {
 export default PostDetails
 
 export async function getStaticProps({params}){
-  // console.log(params)
   const data = (await getPostDetails(params.slug)) || "";
-
   return {
     props : { post : data }
   }
@@ -500,10 +570,8 @@ export async function getStaticProps({params}){
 
 export async function getStaticPaths(){
 
-  const posts2 = await compileNavigationAlgo();
-  let categories;
-  categories = (await (getCategories())).categories.map(c => c.name) || [];
-  // console.log(posts2)
+  const posts2 = await compileNavigationAlgoLinks();
+  console.log(posts2)
 
   let allposts = []
   let sitemap = "<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>"
@@ -519,17 +587,14 @@ export async function getStaticPaths(){
         pusher(post);
       })
     }
-  } 
-  Array.from(categories).forEach(cat => {
-    pusher(cat);
-  });
-  
+  }
+  posts2.set("main", mainpages);
+  pusher("main");
   sitemap += "</urlset>"
   writeFileSync("public/sitemap.xml", sitemap, {
     encoding: 'utf-8',
     flag: 'w'
   });
-  
 
   return {
     paths : allposts.map((post : any) =>  ({params : { slug : post }})),

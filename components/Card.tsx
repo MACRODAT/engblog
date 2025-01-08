@@ -8,23 +8,24 @@ const LinkCard = () => {
     let router = (path : string) => router_.push(path); 
 
     let buttoner = (title : string, link : string) =>  {
-        let pth = (router_.pathname == link) ? ' outline outline-offset-2 outline-slate-500 ' : '';
+        let pth = (router_.pathname == link) ? ' bg-p fg-p ' : 'bg-s fg-s ';
         return (
             <button 
                     onClick={() => router(link)}
                     className={"\
                             min-w-fit w-40   \
-                            m-2  \
+                            flex-auto \
                             p-2  \
-                            relative border-box block pr-0 \
+                            relative border-box pr-0 \
                             mr-0 ml-auto pl-auto \
                             right-0 \
+                            border-l-2 \
                             transition-all \
                             hover:ease-out hover:duration-100 \
-                            hover:bg-zinc-500 \
-                            hover:outline hover:outline-2 hover:outline-offset-2 hover:outline-zinc-500 \
-                            bg-s \
-                            rounded-l-full" + pth
+                            hover:bg-zinc-300 \
+                            hover:sepia \
+                            \
+                            " + pth
                             }
                             >
                 {title}
@@ -39,8 +40,8 @@ const LinkCard = () => {
     // let showAllVar = showAll();
 
     return (
-        <div className='relative w-full m-1 p-0 mr-0 rounded-md pr-0 mr-0
-                
+        <div className='relative w-full m-1 p-0 mr-0 pr-0 mr-0
+                flex hidden md:flex
                 bg-transparent-100
                 backdrop-blur-lg drop-shadow-md'>
             {buttoner('Home', '/')}
@@ -48,20 +49,19 @@ const LinkCard = () => {
                 showAllSideNav()
                 ? 
                 (
-                    buttoner('Login in', '/login')
+                    <>
+                        {
+                            buttoner('Login', '/login')
+                        }
+                        {
+                            buttoner('About', '/about')
+                        }
+                    </>
                 ) 
                 : 
                 ''
             }
-            {
-                showAllSideNav() 
-                ? 
-                (
-                    buttoner('About', '/about')
-                ) 
-                : 
-                ''
-            }
+            
         </div>
     )
 }

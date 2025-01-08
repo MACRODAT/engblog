@@ -3,9 +3,6 @@
 // G-1T471P3SP1
 
 import React, {useEffect, useState} from 'react';
-
-
-
 import  Layout  from '../components/Layout';
 
 import 'tailwindcss/tailwind.css'
@@ -17,14 +14,10 @@ import { Analytics } from '@vercel/analytics/react';
 import type { AppProps } from 'next/app'
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { makeStore } from '../store/store';
-import {PersistGate} from 'redux-persist/integration/react';
+import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist'
-import {Provider, useDispatch} from 'react-redux';
+import { Provider } from 'react-redux';
 import Script from 'next/script';
-import { Html } from 'next/document';
-import Head from 'next/head';
-
-
 
 config.autoAddCss = false
 let store : any;
@@ -46,7 +39,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               <Component  {...pageProps}/>
               <Analytics />
               <Script strategy="afterInteractive" 
-                      src="https://www.googletagmanager.com/gtag/js?id=G-1T471P3SP1" />
+                      src="https://www.googletagmanager.com/gtag/js?id=G-C6M4P0KBT8" />
               <Script id="google-analytics" strategy="afterInteractive">
                 {
                 `
@@ -54,7 +47,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
 
-                gtag('config', 'G-1T471P3SP1');
+                gtag('config', 'G-C6M4P0KBT8');
                 `
                 }
               </Script>
