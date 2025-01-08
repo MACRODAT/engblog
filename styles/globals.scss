@@ -99,10 +99,6 @@ body {
   width: 10px;
 }
 
-i {
-  font-size: x-large;
-}
-
 *::-webkit-scrollbar-track {
   background: transparent;
   border-left: 1px dashed var(--color-fg-e);
@@ -113,6 +109,19 @@ i {
   border-radius: 10px;
   border: 1px solid var(--color-fg-e);
 }
+
+.my-component {
+  background: #fff;
+}
+
+.fullscreen-enabled .my-component {
+  background: #000;
+}
+
+i {
+  font-size: x-large;
+}
+
 
 .text-shadow{
   text-shadow: 0px 2px 0px var(--color-shadow);

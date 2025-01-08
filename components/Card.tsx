@@ -2,6 +2,7 @@
 
 import { Router, useRouter } from 'next/router'
 import React from 'react'
+import MenusMobile from './menusmobile';
 
 const LinkCard = () => {
     const router_ = useRouter();
@@ -56,6 +57,7 @@ const LinkCard = () => {
                         {
                             buttoner('About', '/about')
                         }
+                        <MenusMobile />
                     </>
                 ) 
                 : 
