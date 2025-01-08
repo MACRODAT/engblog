@@ -31,6 +31,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       <h1 style={{textAlign: 'center', verticalAlign: 'center'}}>Loading, please wait...</h1>
     </div>
   );
+
+  document.documentElement.webkitRequestFullscreen();
   
   return (
       <Provider store={store}>
