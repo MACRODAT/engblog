@@ -94,96 +94,98 @@ const Layout = ({ children } : {children : any}) => {
           href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"
           crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Fira+Code:wght@300..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
-      </Head>     
-      <div className="sticky top-0 mr-0 pr-0 z-50 w-screen h-max">
-          <Header scrolled={scrolled}  />
-      </div>
-      <div id='content' 
-            onScroll={
-              (e) => {
-                  var scrollpos = (document.getElementById('content')?.scrollTop) || 0
-                  if (scrollpos > 4 && !scrolled){
-                      setScrolled(true)
-                  }else if (scrollpos < 90 && scrolled){
-                      setScrolled(false)
-                  }
-              }
-            } 
-            className="flex flex-col space-y-0.5
-                      max-h-screen max-w-screen
-                      w-screen
-                      overflow-y-scroll
-                      pr-0 pt-10 m-0 
-                      
-                      relative top-0 -translate-y-8 left-0
-                      ">
-        
-            <div className="flex lg:flex-row flex-col flex-grow m-0 space-x-3 space-y-0.5 "
-                      >
-              {
-                isSearchFocused ? 
-                        <SearchPage /> 
-                        : 
-                        (
-                          <div className="flex-1 lg:flex-auto grow order-last lg:order-first 
-                                          lg:min-width-[70%] lg:w-9/12 w-full 
-                                          h-30 lg:h-full">
-                              {
-                                children  
-                              }
-                          </div>
-                        )
-              }
-              
-              <div id='aside' className="
-                            lg:sticky order-first lg:order-last
-                            w-full lg:w-3/12 xs:w-full sm:w-full 
-                            lg:block hidden md:block
-                            top-10 ml-2 mb-10 flex-grow
-                            lg:h-screen h-min
-                            "
-                            onClick={(e) => e.stopPropagation()}
-                            >
-                    <LinkCard  />
-                    <SearchNav />
-                    { 
-                      showNav() && !isSearchFocused ? 
-                        <SideNav /> : ""
+      </Head>
+      <div className="w-screen h-screen absolute top-0 left-0 overflow-hidden" id="rooter">
+        <div className="sticky top-0 mr-0 pr-0 z-50 w-screen h-max">
+            <Header scrolled={scrolled}  />
+        </div>
+        <div id='content' 
+              onScroll={
+                (e) => {
+                    var scrollpos = (document.getElementById('content')?.scrollTop) || 0
+                    if (scrollpos > 4 && !scrolled){
+                        setScrolled(true)
+                    }else if (scrollpos < 90 && scrolled){
+                        setScrolled(false)
                     }
-                  {/* <div 
-                    // style={{width: "--webkit-fill-available"}}
-                    className="lg:h-screen max-h-screen lg:w-fill p-2 pr-0">
-                    
-                  </div> */}
-              </div>
-
-            </div>
-            <div 
-                id='footer' 
-                style={{minHeight: "200px"}}
-                className='flex-auto block bg-s fg-s pb-3 pt-2 border-t-2 border-dotted
-                          border-teal-800/40
-                          '
-                          >
-              <div className='lg:hidden block'>
-                  {
-                    theme == 'dark' ? 
-                    <i 	
+                }
+              } 
+              className="flex flex-col space-y-0.5
+                        max-h-screen max-w-screen
+                        w-screen
+                        overflow-y-scroll
+                        pr-0 pt-10 m-0 
                         
-                        className='fa-solid fa-sun mx-3 my-0 cursor-pointer hover:animate-pulse float-right'
-                        onClick={switchTheme}> 
-                    </i>
-                    :
-                    <i className='fa-solid fa-moon mx-3 my-0 text-lg cursor-pointer hover:animate-pulse float-right' 
-                        onClick={switchTheme}> </i>
+                        relative top-0 -translate-y-8 left-0
+                        ">
+          
+              <div className="flex lg:flex-row flex-col flex-grow m-0 space-x-3 space-y-0.5 "
+                        >
+                {
+                  isSearchFocused ? 
+                          <SearchPage /> 
+                          : 
+                          (
+                            <div className="flex-1 lg:flex-auto grow order-last lg:order-first 
+                                            lg:min-width-[70%] lg:w-9/12 w-full 
+                                            h-30 lg:h-full">
+                                {
+                                  children  
+                                }
+                            </div>
+                          )
+                }
+                
+                <div id='aside' className="
+                              lg:sticky order-first lg:order-last
+                              w-full lg:w-3/12 xs:w-full sm:w-full 
+                              lg:block hidden md:block
+                              top-10 ml-2 mb-10 flex-grow
+                              lg:h-screen h-min
+                              "
+                              onClick={(e) => e.stopPropagation()}
+                              >
+                      <LinkCard  />
+                      <SearchNav />
+                      { 
+                        showNav() && !isSearchFocused ? 
+                          <SideNav /> : ""
+                      }
+                    {/* <div 
+                      // style={{width: "--webkit-fill-available"}}
+                      className="lg:h-screen max-h-screen lg:w-fill p-2 pr-0">
+                      
+                    </div> */}
+                </div>
 
-                  }
               </div>
-              <h3 className='text-right mr-3 ml-2'>
-                  Made by Macrodat 2023
-              </h3>
-            </div>
+              <div 
+                  id='footer' 
+                  style={{minHeight: "200px"}}
+                  className='flex-auto block bg-s fg-s pb-3 pt-2 border-t-2 border-dotted
+                            border-teal-800/40
+                            '
+                            >
+                <div className='lg:hidden block'>
+                    {
+                      theme == 'dark' ? 
+                      <i 	
+                          
+                          className='fa-solid fa-sun mx-3 my-0 cursor-pointer hover:animate-pulse float-right'
+                          onClick={switchTheme}> 
+                      </i>
+                      :
+                      <i className='fa-solid fa-moon mx-3 my-0 text-lg cursor-pointer hover:animate-pulse float-right' 
+                          onClick={switchTheme}> </i>
 
+                    }
+                </div>
+                <h3 className='text-right mr-3 ml-2'>
+                    Made by Macrodat 2023
+                </h3>
+              </div>
+
+          </div>
         </div>
       </div>
 
