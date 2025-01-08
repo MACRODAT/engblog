@@ -4,7 +4,7 @@ import { Router, useRouter } from 'next/router'
 import React from 'react'
 import MenusMobile from './menusmobile';
 
-const LinkCard = () => {
+const LinkCard = ({mainScreen, sideScreen}: any) => {
     const router_ = useRouter();
     let router = (path : string) => router_.push(path); 
 
@@ -57,7 +57,7 @@ const LinkCard = () => {
                         {
                             buttoner('About', '/about')
                         }
-                        <MenusMobile />
+                        <MenusMobile mainScreen={mainScreen} sideScreen={sideScreen}  />
                     </>
                 ) 
                 : 

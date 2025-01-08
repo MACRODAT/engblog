@@ -50,8 +50,12 @@ body {
     z-index: -1;
 
   }
-  overflow: hidden;
+  overflow-x: hidden;
   
+}
+
+body {
+  overflow-y: scroll;
 }
 
 .bg-p{
@@ -116,7 +120,7 @@ body {
 }
 
 .fullscreen-enabled {
-  background: rgba($color: #000000, $alpha: 0.5) !important;
+  // background: rgba($color: #000000, $alpha: 0.5) !important;
   display: block;
   opacity: 0.2;
 }
