@@ -105,7 +105,7 @@ const Layout = ({ children } : {children : any}) => {
                       setScrolled(true)
                   }else if (scrollpos < 90 && scrolled){
                       setScrolled(false)
-                  } 
+                  }
               }
             }
             className="flex flex-col space-y-0.5
