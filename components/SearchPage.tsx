@@ -1,6 +1,6 @@
 import PostCard from '../components/Postcard';
 import {useEffect, useState} from 'react';
-import { compileNavigationAlgo, getCategories } from '../services';
+import { compileNavigationAlgo } from '../services';
 
 //  @ts-nocheck
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
