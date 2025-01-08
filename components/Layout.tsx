@@ -107,7 +107,7 @@ const Layout = ({ children } : {children : any}) => {
                       setScrolled(false)
                   }
               }
-            }
+            } 
             className="flex flex-col space-y-0.5
                       max-h-screen max-w-screen
                       w-screen
