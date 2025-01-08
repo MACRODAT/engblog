@@ -73,7 +73,7 @@ const Layout = ({ children } : {children : any}) => {
   }, [_searchfocus]);
 
   return (
-    <div className="w-full h-full m-0 p-0 overflow-hidden" style={stylers}
+    <div className="w-full h-full m-0 p-0 overflow-hidden absolute left-0 top-0" style={stylers}
               onClick={
                     (_) => { 
                                   if ( isSearchFocused ) {
@@ -94,7 +94,7 @@ const Layout = ({ children } : {children : any}) => {
           crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Fira+Code:wght@300..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
       </Head>     
-      <div className="sticky top-0 mr-0 pr-0 z-50 w-full h-max">
+      <div className="sticky top-0 mr-0 pr-0 z-50 w-screen h-max">
           <Header scrolled={scrolled}  />
       </div>
       <div id='content' 
@@ -108,10 +108,16 @@ const Layout = ({ children } : {children : any}) => {
                   }
               }
             }
-            className="flex flex-col space-y-0.5 max-h-screen 
-                      w-screen overflow-y-scroll pr-0 pt-10 mr-0 absolute top-0">
+            className="flex flex-col space-y-0.5
+                      max-h-screen max-w-screen
+                      w-screen
+                      overflow-y-scroll
+                      pr-0 pt-10 m-0 
+                      
+                      relative top-0 -translate-y-8 left-0
+                      ">
         
-            <div className="flex lg:flex-row flex-col flex-grow m-0 space-x-1 space-y-0.5 "
+            <div className="flex lg:flex-row flex-col flex-grow m-0 space-x-3 space-y-0.5 "
                       >
               {
                 isSearchFocused ? 
@@ -129,20 +135,25 @@ const Layout = ({ children } : {children : any}) => {
               }
               
               <div id='aside' className="
-                            lg:sticky order-first lg:order-last 
-                            lg:w-80 xs:w-full sm:w-full lg:block hidden md:block
-                            top-10 ml-2 mb-10 flex-1
-                            lg:h-screen h-min"
+                            lg:sticky order-first lg:order-last
+                            w-full lg:w-3/12 xs:w-full sm:w-full 
+                            lg:block hidden md:block
+                            top-10 ml-2 mb-10 flex-grow
+                            lg:h-screen h-min
+                            "
                             onClick={(e) => e.stopPropagation()}
                             >
-                  <div className="w-full lg:h-screen max-h-screen lg:w-80 overflow-hidden p-2 pr-0">
                     <LinkCard  />
                     <SearchNav />
                     { 
                       showNav() && !isSearchFocused ? 
                         <SideNav /> : ""
                     }
-                  </div>
+                  {/* <div 
+                    // style={{width: "--webkit-fill-available"}}
+                    className="lg:h-screen max-h-screen lg:w-fill p-2 pr-0">
+                    
+                  </div> */}
               </div>
 
             </div>
