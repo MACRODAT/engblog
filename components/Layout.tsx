@@ -85,6 +85,7 @@ const Layout = ({ children } : {children : any}) => {
       <Head>
         <title>The engineer blog</title>
         <meta name="google-site-verification" content="6eaL9fiBZUv9Qss66rr9LnoPyNEv5e5rdfO7_GqQwVc" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
         <link 
