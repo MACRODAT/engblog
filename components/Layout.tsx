@@ -119,7 +119,7 @@ const Layout = ({ children } : {children : any}) => {
                         relative top-0 -translate-y-8 left-0
                         ">
           
-              <div className="flex lg:flex-row flex-col flex-grow m-0 space-x-3 space-y-0.5 width-[90%] "
+              <div className="flex lg:flex-row flex-col flex-grow m-0 space-x-3 space-y-0.5 w-[90%] "
                         >
                 {
                   isSearchFocused ? 
