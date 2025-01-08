@@ -39,7 +39,7 @@ body {
   
   color: var(--color-fg-p);
   background-color: var(--color-bg-p);
-  // scroll-behavior: smooth;
+  scroll-behavior: smooth;
   
   &:before{
     content:'';

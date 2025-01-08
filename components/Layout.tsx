@@ -75,12 +75,38 @@ const Layout = ({ children } : {children : any}) => {
     setSearchFocus(_searchfocus)
   }, [_searchfocus]);
 
-  
+  useEffect(() => {
+    const handleScroll = () => {
+      // setScrollPosition(window.scrollY); // Get the scroll position of the body
+      var scrollpos = (window.scrollY) || 0
+      // console.log(scrollpos)
+      if (scrollpos > 12){
+          setScrolled(true);
+          // console.log("Scrolled")
+          // mainScreen.enter();
+        }else if (scrolled){
+          // console.log("NOT Scrolled")
+          setScrolled(false)
+        }
+    };
+
+    // Attach the scroll event to the window
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
       <>
-        <div handle={mainScreen} className='mainScreen'>
-          <div className="w-full h-full m-0 p-0 overflow-x-hidden absolute left-0 top-0" style={stylers}
+        
+        <div>
+          <div className="sticky top-0 mr-0 pr-0 z-50 w-screen h-max">
+              <Header scrolled={scrolled}  />
+          </div>
+          <div className="w-full min-h-screen m-0 p-0 overflow-x-hidden absolute left-0 top-0" style={stylers}
                     onClick={
                           (_) => {
                                         
@@ -103,21 +129,21 @@ const Layout = ({ children } : {children : any}) => {
                 crossOrigin="anonymous" />
               <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Fira+Code:wght@300..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
             </Head>
-            <div className="w-screen min-h-screen absolute top-0 left-0 overflow-x-hidden" id="rooter">
-              <div className="sticky top-0 mr-0 pr-0 z-50 w-screen h-max">
-                  <Header scrolled={scrolled}  />
-              </div>
+            
+            <div className="w-screen min-h-screen relative top-0 left-0 overflow-x-hidden" id="rooter">
               <div id='content' 
                     onScroll={
                       (e) => {
                           // var scrollpos = (document.getElementById('content')?.scrollTop) || 0
-                          var scrollpos = (document.getElementsByTagName('body').item(0)?.scrollTop) || 0
-                          if (scrollpos > 4 && !scrolled){
-                              setScrolled(true);
-                              // mainScreen.enter();
-                          }else if (scrollpos < 90 && scrolled){
-                              setScrolled(false)
-                          }
+                          // var scrollpos = (document.getElementsByTagName('body').item(0)?.scrollTop) || 0
+                          // var scrollpos = (window.scrollY) || 0
+                          // console.log(window.scrollY)
+                          // if (scrollpos > 4 && !scrolled){
+                          //     setScrolled(true);
+                          //     // mainScreen.enter();
+                          // }else if (scrollpos < 90 && scrolled){
+                          //     setScrolled(false)
+                          // }
                       }
                     } 
                     className="flex flex-col space-y-0.5
@@ -126,7 +152,7 @@ const Layout = ({ children } : {children : any}) => {
                               w-full
                               relative top-0 -translate-y-8 left-0
                               ">
-                
+                    
                     <div className="flex lg:flex-row flex-col flex-grow m-0 space-x-3 space-y-0.5 self-center w-full "
                               >
                       {
