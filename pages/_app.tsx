@@ -32,7 +32,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     </div>
   );
 
-  document.documentElement.webkitRequestFullscreen();
   
   return (
       <Provider store={store}>
