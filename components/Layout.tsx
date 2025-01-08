@@ -111,15 +111,15 @@ const Layout = ({ children } : {children : any}) => {
                 }
               } 
               className="flex flex-col space-y-0.5
-                        max-h-screen max-w-screen
-                        w-screen
+                        max-h-screen
                         overflow-y-scroll
+                        overflow-x-hidden
                         pr-0 pt-10 m-0 
-                        
+                        w-full
                         relative top-0 -translate-y-8 left-0
                         ">
           
-              <div className="flex lg:flex-row flex-col flex-grow m-0 space-x-3 space-y-0.5 w-[90%] "
+              <div className="flex lg:flex-row flex-col flex-grow m-0 space-x-3 space-y-0.5 self-center w-full "
                         >
                 {
                   isSearchFocused ? 

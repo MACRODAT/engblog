@@ -411,7 +411,7 @@ const PostDetails = ({ post} : {post : any}) => {
 
   return (
     <div className={theme == 'light' ? 
-                  'bg-p fg-p pb-40 py-3 px-4 ml-2 w-full container'
+                  'bg-p fg-p pb-40 py-3 px-4 ml-2 w-auto container'
                   :
                   'bg-p fg-p pb-40 py-3 px-4 ml-2 w-full container'
                 }
