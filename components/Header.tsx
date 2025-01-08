@@ -54,6 +54,7 @@ const Header = ({scrolled} :
 				basis-7/12 \
 				text-center \
 				flex-grow \
+				\
 			" 
 		}
 	}
@@ -82,7 +83,7 @@ const Header = ({scrolled} :
     return (
         <div id='header'
 			className={"mr-0 p-0 flex justify-center items-center content-center " + 
-            	(scrolled ? 'backdrop-blur-sm drop-shadow-md brightness-100 border-b-4' : 'bg-transparent')}
+            	(scrolled ? 'fg-p bg-p brightness-100 border-b-4 border-black' : 'bg-transparent')}
           > 
 				<div 
 						onClick={switchTheme}

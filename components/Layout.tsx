@@ -93,23 +93,25 @@ const Layout = ({ children } : {children : any}) => {
           crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Fira+Code:wght@300..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
       </Head>     
-      <div className="sticky top-0 mr-0 pr-0 z-50 w-full h-10">
-                <Header scrolled={scrolled}  />
+      <div className="sticky top-0 mr-0 pr-0 z-50 w-full h-max">
+          <Header scrolled={scrolled}  />
       </div>
       <div id='content' 
             onScroll={
               (e) => {
                   var scrollpos = (document.getElementById('content')?.scrollTop) || 0
-                  if (scrollpos > 10 && !scrolled){
+                  if (scrollpos > 4 && !scrolled){
                       setScrolled(true)
                   }else if (scrollpos < 90 && scrolled){
                       setScrolled(false)
                   }
               }
             }
-            className="flex flex-col space-y-0.5 h-screen w-screen overflow-y-scroll pr-0 mr-0 top-0">
+            className="flex flex-col space-y-0.5 max-h-screen 
+                      w-screen overflow-y-scroll pr-0 pt-10 mr-0 absolute top-0">
         
-            <div className="flex lg:flex-row flex-col flex-grow space-x-1 space-y-0.5 min-h-fit">
+            <div className="flex lg:flex-row flex-col flex-grow m-0 space-x-1 space-y-0.5 "
+                      >
               {
                 isSearchFocused ? 
                         <SearchPage /> 
@@ -117,7 +119,7 @@ const Layout = ({ children } : {children : any}) => {
                         (
                           <div className="flex-1 lg:flex-auto grow order-last lg:order-first 
                                           lg:min-width-[70%] lg:w-9/12 w-full 
-                                          h-30 lg:h-full mb-auto">
+                                          h-30 lg:h-full">
                               {
                                 children  
                               }
@@ -143,7 +145,13 @@ const Layout = ({ children } : {children : any}) => {
               </div>
 
             </div>
-            <div id='footer' className='flex-auto block bg-red-300 pb-3 pt-2 border-t border-dotted border-teal-800/40 scroll-m-10'>
+            <div 
+                id='footer' 
+                style={{minHeight: "200px"}}
+                className='flex-auto block bg-s fg-s pb-3 pt-2 border-t-2 border-dotted
+                          border-teal-800/40
+                          '
+                          >
               <div className='lg:hidden block'>
                   {
                     theme == 'dark' ? 
@@ -158,7 +166,7 @@ const Layout = ({ children } : {children : any}) => {
 
                   }
               </div>
-              <h3 className='text-right mr-3 ml-2 h-100'>
+              <h3 className='text-right mr-3 ml-2'>
                   Made by Macrodat 2023
               </h3>
             </div>

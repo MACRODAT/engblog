@@ -156,7 +156,7 @@ export default function SideNav(){
  
   return (
     <div id="sidenav"
-        className=' border border-slate-200/30 fg-p text-sm md:text-lg
+        className='border border-slate-200/30 fg-p text-sm md:text-lg
                 p-2 m-1 text-center
                 right-0 mr-0
                 w-full'
@@ -164,7 +164,7 @@ export default function SideNav(){
             {
               (nav === null || nav === undefined) ? '...' : (
                 <ul className='marker:text-sky-700 transition-all p-1 ease-in duration-150'>
-                    <li key={'1'} id='focused' className='hover:underline hover:decoration-solid fg-p font-bold'>Blog Content</li>
+                    <li key={'1'} id='focused' className='hover:underline hover:decoration-solid text-left fg-p font-bold'>Blog Content</li>
                     {
                       compiler()
                     }
