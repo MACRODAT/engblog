@@ -114,8 +114,8 @@ const Layout = ({ children } : {children : any}) => {
                 crossOrigin="anonymous" />
               <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Fira+Code:wght@300..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
         </Head>
-        <div className='h-screen w-screen flex flex-col'>
-            <div className="sticky relative top-0 mr-0 pr-0 z-50 w-screen h-max">
+        <div className='w-screen flex flex-col'>
+            <div className="sticky top-0 mr-0 pr-0 z-50 w-screen h-auto">
                 <Header scrolled={scrolled}  />
             </div>
             <div className="w-screen flex flex-grow min-h-screen m-0 p-0 left-0 top-0" style={stylers}
