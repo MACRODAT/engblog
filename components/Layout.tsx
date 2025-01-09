@@ -114,11 +114,11 @@ const Layout = ({ children } : {children : any}) => {
                 crossOrigin="anonymous" />
               <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Fira+Code:wght@300..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
         </Head>
-        <div className='w-screen flex flex-col'>
-            <div className="sticky relative top-0 mr-0 pr-0 z-50 w-screen h-auto">
+        <div className='w-full flex flex-col overflow-x-clip m-0 p-0'>
+            <div className="sticky relative top-0  m-0 p-0 z-50 w-full h-auto ">
                 <Header scrolled={scrolled}  />
             </div>
-            <div className="w-screen flex flex-grow min-h-screen m-0 p-0 left-0 top-0" style={stylers}
+            <div className="w-full flex flex-grow min-h-screen m-0 p-0 overflow-x-clip" style={stylers}
                       onClick={
                             (_) => {
                                           
@@ -130,7 +130,7 @@ const Layout = ({ children } : {children : any}) => {
                   >
               
               
-              <div className="w-screen min-h-screen relative top-0 left-0 " id="rooter">
+              <div className="w-full min-h-screen overflow-x-clip" id="rooter">
                 <div id='content' 
                       onScroll={
                         (e) => {
@@ -146,7 +146,7 @@ const Layout = ({ children } : {children : any}) => {
                             // }
                         }
                       } 
-                      className="flex flex-col space-y-0.5
+                      className="flex flex-col space-y-0.5 overflow-x-clip
                                 px-0 pt-10 m-0 
                                 w-full
                                 relative top-0 -translate-y-8 left-0
@@ -173,7 +173,7 @@ const Layout = ({ children } : {children : any}) => {
                                       lg:sticky order-first lg:order-last
                                       w-full lg:w-3/12 xs:w-full sm:w-full 
                                       lg:block hidden md:block
-                                      top-10 ml-2 mb-10 flex-grow
+                                      top-20 ml-2 mb-10 flex-grow
                                       lg:h-screen h-min
                                       "
                                       onClick={(e) => e.stopPropagation()}

@@ -41,7 +41,7 @@ const LinkCard = ({mainScreen, sideScreen}: any) => {
     // let showAllVar = showAll();
 
     return (
-        <div className='relative w-full m-1 p-0 mr-0 pr-0 mr-0
+        <div className='relative w-full p-1 m-0
                 flex hidden md:flex
                 bg-transparent-100
                 backdrop-blur-lg drop-shadow-md'>

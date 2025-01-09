@@ -80,7 +80,7 @@ const Header = ({scrolled} :
 
     return (
         <div id='header'
-			className={"mr-0 p-0 flex justify-center items-center content-center " + 
+			className={"mr-0 p-0 w-full pl-2 pr-2 flex justify-center items-center content-center " + 
             	(scrolled ? 
 							(
 								theme == 'light' ?
@@ -108,17 +108,18 @@ const Header = ({scrolled} :
 				
 				<h3 className={ 
 						scrolled ? 
-							'flex-initial text-end  font-thin p-2 \
+							'flex-initial text-center font-thin p-2 \
 							cursor-pointer \
 							hover:ease-out hover:bg-indigo-900/50 hover:border-dashed hover:border-orange-900 hover:text-slate-50 \
 							' 
 							:  
-							('flex-initial text-end cursor-pointer p-2 m-0 \
-							border-indigo-500  border-b \
+							('flex-initial text-center cursor-pointer p-2 m-0 \
+							\
 							hover:ease-in  hover:border-indigo-500 \
 							'
-							.concat(loggedInState ? 'bg-sky-100' : '')
-							.concat(theme == 'light' ? 'hover:text-slate-900 hover:bg-indigo-100 bg-white' : 'hover-text-slate-50 bg-black hover:bg-sky-900')
+							.concat(loggedInState ? '' : '')
+							.concat(theme == 'light' ? 'hover:text-slate-900 hover:bg-indigo-100' 
+											: 'hover-text-slate-50 hover:bg-sky-900')
 							)}>
 						{
 							loggedInState ? 
@@ -129,7 +130,12 @@ const Header = ({scrolled} :
 								</div>
 							):
 							(
-								<div onClick={loginFunction}><i className='fa fa-sm fa-user' /> Login </div>
+								<div onClick={loginFunction}>
+									<i className='fa fa-sm fa-user' />
+									<span className='hidden md:inline mx-4'>
+										Login
+									</span>
+								</div>
 							)
 						}
 				</h3>

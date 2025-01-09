@@ -32,7 +32,7 @@ body {
   
   padding: 0;
   margin: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   font-family: 'Fira Code', sans-serif;
   font-weight: 400;
@@ -40,7 +40,7 @@ body {
   color: var(--color-fg-p);
   background-color: var(--color-bg-p);
   scroll-behavior: smooth;
-  
+
   &:before{
     content:'';
     width: 100%;
