@@ -37,7 +37,7 @@ const Header = ({scrolled} :
 		
 		if (scrolled) 
 		{ 
-			return "mx-8 mt-2 md:mt-1 md:mb-1 animateHeader ita flex-1 text-xl md:text-2xl  \
+			return "m-0 md:mt-1 md:mb-1 animateHeader ita flex-grow text-center text-lg md:text-xl lg:text-2xl  \
 				\
 				\
 				\
@@ -47,10 +47,8 @@ const Header = ({scrolled} :
 		}
 		else{
 			return "mr-10 ml-10 mt-2 md:mt-1 md:mb-1 ita \
-				uppercase text-xl md:text-2xl font-thin \
-				transition ease-out duration-100 \
-				hover:ease-in hover:scale-105 \
-				motion-safe  \
+				uppercase text-xl md:text-2xl lg:text-4xl underline \
+				decoration-double font-thin \
 				basis-7/12 \
 				text-center \
 				flex-grow \
@@ -83,7 +81,18 @@ const Header = ({scrolled} :
     return (
         <div id='header'
 			className={"mr-0 p-0 flex justify-center items-center content-center " + 
-            	(scrolled ? 'fg-p bg-p brightness-100 border-b-4 border-black' : 'bg-transparent')}
+            	(scrolled ? 
+							(
+								theme == 'light' ?
+								'fg-p bg-p border-b-1 border-black \
+								drop-shadow-[0_1px_4px_rgba(0,0,0,0.75)]' 
+								:
+								'fg-p bg-p border-b-1 border-white \
+								drop-shadow-[0_1px_8px_rgba(20,255,40,0.25)]' 
+
+							)
+							: 
+							'bg-transparent')}
           > 
 				<div 
 						onClick={switchTheme}
@@ -101,13 +110,11 @@ const Header = ({scrolled} :
 						scrolled ? 
 							'flex-initial text-end  font-thin p-2 \
 							cursor-pointer \
-							transition ease-out duration-100 \
 							hover:ease-out hover:bg-indigo-900/50 hover:border-dashed hover:border-orange-900 hover:text-slate-50 \
 							' 
 							:  
 							('flex-initial text-end cursor-pointer p-2 m-0 \
 							border-indigo-500  border-b \
-							transition ease-out duration-100 \
 							hover:ease-in  hover:border-indigo-500 \
 							'
 							.concat(loggedInState ? 'bg-sky-100' : '')

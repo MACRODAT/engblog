@@ -79,15 +79,15 @@ const Layout = ({ children } : {children : any}) => {
     const handleScroll = () => {
       // setScrollPosition(window.scrollY); // Get the scroll position of the body
       var scrollpos = (window.scrollY) || 0
-      console.log(scrollpos)
-      if (scrollpos > 12){
-          setScrolled(true);
-          // console.log("Scrolled")
-          // mainScreen.enter();
-        }else if (scrolled){
-          // console.log("NOT Scrolled")
-          setScrolled(false)
+      // console.log(scrollpos, scrolled)
+      setScrolled((prevScrolled) => {
+        if (scrollpos > 12 && !prevScrolled) {
+          return true;
+        } else if (scrollpos <= 12 && prevScrolled) {
+          return false;
         }
+        return prevScrolled; // No change
+      });
     };
 
     // Attach the scroll event to the window
@@ -115,7 +115,7 @@ const Layout = ({ children } : {children : any}) => {
               <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Fira+Code:wght@300..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
         </Head>
         <div className='w-screen flex flex-col'>
-            <div className="sticky top-0 mr-0 pr-0 z-50 w-screen h-auto">
+            <div className="sticky relative top-0 mr-0 pr-0 z-50 w-screen h-auto">
                 <Header scrolled={scrolled}  />
             </div>
             <div className="w-screen flex flex-grow min-h-screen m-0 p-0 left-0 top-0" style={stylers}

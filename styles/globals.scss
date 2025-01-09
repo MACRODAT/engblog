@@ -156,22 +156,23 @@ a {
 }
 
 .animateHeader{
-  animation: headerTiny 500ms ease-in-out 0s alternate;
+  animation: headerTiny 100ms ease-in-out 0s alternate;
 }
 
 @keyframes headerTiny {
   0% {
-    text-align: center;
+    // text-align: center;
     opacity: 0;
   }
   50% {
-    font-weight: 100;
+    // font-weight: 100;
     text-align: center;
-    padding-left: 10px;
+    // padding-left: 10px;
+    opacity: 0.5;
   }
   100% {
     opacity: 1;
-    float: left;
+    // text-align: center;
   }
 }
 
