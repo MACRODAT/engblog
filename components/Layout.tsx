@@ -1,6 +1,5 @@
 //  @ts-nocheck
-import React, { useEffect, useState } from 'react'
-import { FullScreen, useFullScreenHandle } from "react-full-screen";
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head'
 import LinkCard from './Card'
 import Header from './Header'
@@ -13,6 +12,7 @@ import SearchNav from './Search'
 import SearchPage from './SearchPage'
 
 import {  setSearchFocus as sf } from '../store/userSlice';
+import Footer from './footer';
 
 const Layout = ({ children } : {children : any}) => {
 
@@ -25,8 +25,6 @@ const Layout = ({ children } : {children : any}) => {
   }
 
   let [stylers, setStylers] = useState(styles);
-  const mainScreen = useFullScreenHandle();
-  const sideScreen = useFullScreenHandle();
   
   const router_ = useRouter();
 
@@ -171,14 +169,14 @@ const Layout = ({ children } : {children : any}) => {
                         
                         <div id='aside' className="
                                       lg:sticky order-first lg:order-last
-                                      w-full lg:w-3/12 xs:w-full sm:w-full 
+                                      w-full lg:w-2/12 lg:min-w-[250px] xs:w-full sm:w-full 
                                       lg:block hidden md:block
                                       top-20 ml-2 mb-10 flex-grow
                                       lg:h-screen h-min
                                       "
                                       onClick={(e) => e.stopPropagation()}
                                       >
-                              <LinkCard mainScreen={mainScreen} sideScreen={sideScreen}  />
+                              <LinkCard />
                               <SearchNav />
                               { 
                                 showNav() && !isSearchFocused ? 
@@ -199,7 +197,7 @@ const Layout = ({ children } : {children : any}) => {
                                     border-teal-800/40
                                     '
                                     >
-                        <div className='lg:hidden block'>
+                        {/* <div className='lg:hidden block'>
                             {
                               theme == 'dark' ? 
                               <i 	
@@ -215,7 +213,8 @@ const Layout = ({ children } : {children : any}) => {
                         </div>
                         <h3 className='text-right mr-3 ml-2'>
                             Made by Macrodat 2023
-                        </h3>
+                        </h3> */}
+                        <Footer />
                       </div>
 
                   </div>

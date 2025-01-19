@@ -66,7 +66,7 @@ export default function SideNav(){
                   let children = findAllNodes(el);
                   // console.log(children)
                   return <li key={el} className={
-                                    'w-full pl-5 grid grid-cols-5'
+                                    'w-full pl-1 grid grid-cols-5'
                                   }
                             onClick={(e) => {
                               menus = menus.set(el, !menus.get(el));

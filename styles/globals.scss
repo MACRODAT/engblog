@@ -263,10 +263,61 @@ ul {
 }
 
 #contentpost{
-  font-size: calc(16px * var(--fontSizeMultiplier));
+  font-size: calc(18px * var(--fontSizeMultiplier));
   font-weight: calc(300 * var(--fontSizeMultiplier));
 
+  // SETTING UP NUMBERING
+  /* Initialize counters for h1, h2, and h3 */
+  body {
+    counter-reset: section; /* Reset the counter for h1 */
+    counter-reset: h4-counter;
+  }
+
+  h1 {
+    counter-reset: subsection; /* Reset subsection for h1 */
+    counter-increment: section; /* Increment the main section counter */
+  }
+
+  h1::before {
+    content: counter(section, upper-roman) ". " !important; /* Display the counter as Roman numeral */
+  }
+
+  h2 {
+    counter-increment: subsection; /* Increment subsection counter */
+  }
+
+  h2::before {
+    content: counter(section, upper-roman) "." counter(subsection, decimal) " "; /* I.1 format */
+  }
+
+  h3 {
+    counter-increment: subsubsection; /* Increment the third level counter */
+  }
+
+  h3::before {
+    content: counter(section, upper-roman) "." counter(subsection, decimal) "." counter(subsubsection, lower-alpha) " "; /* I.1.a format */
+  }
+
+  h4 {
+    counter-increment: h4-counter;
+  }
+
+  h4::before {
+    content: counter(h4-counter) ". "; /* Display the number followed by a dot */
+  }
+
+
+
+
+  @media (min-width: 400px) and (max-width:1000px) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
   @media (min-width: 1000px) {
+
+    
+
     h1 {
       text-align: center;
       position: relative;
@@ -291,6 +342,12 @@ ul {
       right: 0;
       margin-left: 0px; /* Add space between the title and the line */
     }
+
+    p, h2, h3, h4, h5, ol, ul {
+      margin-left: 100px !important;
+      margin-right: 100px !important;
+    }
+
   }
 
 
