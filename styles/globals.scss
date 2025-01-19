@@ -279,7 +279,7 @@ ul {
   }
 
   h1::before {
-    content: counter(section, upper-roman) ". " !important; /* Display the counter as Roman numeral */
+    // content: counter(section, upper-roman) ". " !important; /* Display the counter as Roman numeral */
   }
 
   h2 {

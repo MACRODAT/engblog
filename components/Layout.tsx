@@ -7,7 +7,6 @@ import SideNav from './sidenav'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchNavIfNoNav } from '../store/userSlice'
 import { useRouter } from 'next/router'
-import { setThemeState } from '../store/themeSlice'
 import SearchNav from './Search'
 import SearchPage from './SearchPage'
 
@@ -53,14 +52,6 @@ const Layout = ({ children } : {children : any}) => {
   }, [sz])
 
   let theme = useSelector(state => state.theming.current);
-
-	const switchTheme = () => {
-		if (theme == 'light'){
-			dispatch(setThemeState('dark'))
-		}else{
-			dispatch(setThemeState('light'))
-		}
-	}
 
   let showNav = () => {
     return true;
@@ -193,7 +184,7 @@ const Layout = ({ children } : {children : any}) => {
                       <div 
                           id='footer' 
                           style={{minHeight: "200px"}}
-                          className='flex-auto block bg-s fg-s pb-3 pt-2 border-t-2 border-dotted
+                          className='flex-auto block fg-s mt-10 border-t-2 border-dotted
                                     border-teal-800/40
                                     '
                                     >

@@ -1,75 +1,71 @@
+import Link from "next/link";
 import React from "react";
+import { setThemeState } from '../store/themeSlice'
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Footer() {
+
+
+	let dispatch = useDispatch();
+
+	let theme = useSelector((state: any) => state.theming.current);
+
+	const switchTheme = () => {
+		if (theme == 'light'){
+			dispatch(setThemeState('dark'))
+		}else{
+			dispatch(setThemeState('light'))
+		}
+	}
+
 	return (
-	  <footer className="bg-gray-100 text-gray-600 text-sm">
+	  <footer className="bg-p fg-p text-sm">
 		{/* Top Section */}
 		<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 border-b border-gray-300">
-		  <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
-			<div>
-			  <h3 className="font-semibold text-gray-900 mb-4">Shop and Learn</h3>
-			  <ul className="space-y-2">
-				<li><a href="#" className="hover:underline">Store</a></li>
-				<li><a href="#" className="hover:underline">Mac</a></li>
-				<li><a href="#" className="hover:underline">iPad</a></li>
-				<li><a href="#" className="hover:underline">iPhone</a></li>
-				<li><a href="#" className="hover:underline">Watch</a></li>
-				<li><a href="#" className="hover:underline">AirPods</a></li>
-			  </ul>
+		  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+			<div className="mx-10">
+				<div className='lg:hidden block'>
+					{
+						theme == 'dark' ? 
+						<i 	
+							
+							className='fp-p fa-solid fa-sun mx-3 my-0 cursor-pointer hover:animate-pulse float-right'
+							onClick={switchTheme}> 
+						</i>
+						:
+						<i className='fa-solid fa-moon mx-3 my-0 text-lg cursor-pointer hover:animate-pulse float-right' 
+							onClick={switchTheme}> </i>
+
+					}
+				</div>
+				<h3 className="font-semibold text-gray-900 dark:text-gray-400 mb-4">
+					Who is this blog for?
+				</h3>
+				<p>
+					This blog is <em>primarly</em> aimed for fellow mechanical engineers.
+					It is a place for sharing of ideas, our common curiosity on how things
+					<em>-should-</em> work, and much more.
+					Thank you for stopping by! I hope you enjoy exploring this corner of the internet as much as I enjoy creating it. 
+					Let’s build, innovate, and inspire together!
+					Feel free to reach out or share your thoughts — I’d love to connect!					
+				</p>
 			</div>
-  
-			<div>
-			  <h3 className="font-semibold text-gray-900 mb-4">Services</h3>
+			<div className="mx-10">
+			  <h3 className="font-semibold text-gray-900 dark:text-gray-400 mb-4">About me</h3>
 			  <ul className="space-y-2">
-				<li><a href="#" className="hover:underline">Apple Music</a></li>
-				<li><a href="#" className="hover:underline">Apple TV+</a></li>
-				<li><a href="#" className="hover:underline">iCloud</a></li>
-				<li><a href="#" className="hover:underline">Apple Books</a></li>
-			  </ul>
-			</div>
-  
-			<div>
-			  <h3 className="font-semibold text-gray-900 mb-4">Apple Store</h3>
-			  <ul className="space-y-2">
-				<li><a href="#" className="hover:underline">Find a Store</a></li>
-				<li><a href="#" className="hover:underline">Genius Bar</a></li>
-				<li><a href="#" className="hover:underline">Today at Apple</a></li>
-				<li><a href="#" className="hover:underline">Apple Camp</a></li>
-			  </ul>
-			</div>
-  
-			<div>
-			  <h3 className="font-semibold text-gray-900 mb-4">For Business</h3>
-			  <ul className="space-y-2">
-				<li><a href="#" className="hover:underline">Apple and Business</a></li>
-				<li><a href="#" className="hover:underline">Shop for Business</a></li>
-			  </ul>
-			</div>
-  
-			<div>
-			  <h3 className="font-semibold text-gray-900 mb-4">For Education</h3>
-			  <ul className="space-y-2">
-				<li><a href="#" className="hover:underline">Apple and Education</a></li>
-				<li><a href="#" className="hover:underline">Shop for Education</a></li>
-				<li><a href="#" className="hover:underline">College Students</a></li>
-			  </ul>
-			</div>
-  
-			<div>
-			  <h3 className="font-semibold text-gray-900 mb-4">Apple Values</h3>
-			  <ul className="space-y-2">
-				<li><a href="#" className="hover:underline">Accessibility</a></li>
-				<li><a href="#" className="hover:underline">Environment</a></li>
-				<li><a href="#" className="hover:underline">Privacy</a></li>
+				<li><Link href={"/about"} className="hover:underline">About me</Link></li>
+				<li><Link href={"/about"} className="hover:underline">Contact</Link></li>
+				<li><Link href={"/about"} className="hover:underline">Have stories? Post here!</Link></li>
+				<li><Link href={"/about"} className="hover:underline">My IT blog</Link></li>
 			  </ul>
 			</div>
 		  </div>
 		</div>
-  
+		
 		{/* Bottom Section */}
 		<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-		  <p className="text-center text-xs text-gray-500">
-			© 2025 Apple Inc. All rights reserved. | <a href="#" className="hover:underline">Privacy Policy</a> | <a href="#" className="hover:underline">Terms of Use</a>
+		  <p className="text-center text-xs text-gray-500 dark:text-gray-400">
+			© 2025 Macrodat
 		  </p>
 		</div>
 	  </footer>
