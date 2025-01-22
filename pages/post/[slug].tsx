@@ -118,6 +118,19 @@ const PostDetails = ({ post} : {post : any}) => {
     return <i className="fa-solid fa-face-smirking"></i>
   } 
 
+  let convertToId = (content_: any) => {
+    try{
+      console.log(content_)
+      let txt = content_[0];
+      return txt.toLowerCase() // Convert to lowercase
+          .trim() // Remove leading/trailing whitespace
+          .replace(/[^a-z0-9]+/g, "-") // Replace spaces and special characters with hyphens
+          .replace(/^-+|-+$/g, ""); // Remove leading/trailing hyphens
+    }catch (e){
+      return "";
+    };
+  }
+
 
   const CodeBlock = {
     
@@ -302,28 +315,28 @@ const PostDetails = ({ post} : {post : any}) => {
                     }
                     {...otherprops} />
     },
-    h3({children, ...otherprops}){
-      return <>
-                <hr className='w-full opacity-0' />
-                <h3 {...otherprops}>{children}</h3>
-              </>
-    },
     h1({children, ...otherprops}){
       return <>
                 <hr className='w-full opacity-0' />
-                <h1 {...otherprops}>{children}</h1>
+                <h1 {...otherprops} id={convertToId(children)}>{children}</h1>
               </>
     },
     h2({children, ...otherprops}){
       return <>
                 <hr className='w-full opacity-0' />
-                <h2 {...otherprops}>{children}</h2>
+                <h2 {...otherprops} id={convertToId(children)}>{children}</h2>
+              </>
+    },
+    h3({children, ...otherprops}){
+      return <>
+                <hr className='w-full opacity-0' />
+                <h3 {...otherprops} id={convertToId(children)}>{children}</h3>
               </>
     },
     h4({children, ...otherprops}){
       return <>
                 <hr className='w-full opacity-0' />
-                <h4 {...otherprops}>{children}</h4>
+                <h4 {...otherprops} id={convertToId(children)}>{children}</h4>
               </>
     },
     h5({children, ...otherprops}){
