@@ -271,8 +271,6 @@ ul {
 }
 
 #contentpost{
-  font-size: calc(18px * var(--fontSizeMultiplier));
-  font-weight: calc(300 * var(--fontSizeMultiplier));
 
   // SETTING UP NUMBERING
   /* Initialize counters for h1, h2, and h3 */
@@ -348,13 +346,18 @@ ul {
 
 
   @media (min-width: 400px) and (max-width:1000px) {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 18px;
+    padding-right: 18px;
+    
+    font-size: calc(14px * var(--fontSizeMultiplier));
+    font-weight: calc(250 * var(--fontSizeMultiplier));
   }
 
   @media (min-width: 1000px) {
 
     
+    font-size: calc(18px * var(--fontSizeMultiplier));
+    font-weight: calc(350 * var(--fontSizeMultiplier));
 
     h1 {
       text-align: center;
@@ -381,7 +384,7 @@ ul {
       margin-left: 0px; /* Add space between the title and the line */
     }
 
-    > p, > h2, > h3, > h4, > h5, > ol, > ul, > div, > table {
+    > p, > h2, > h3, > h4, > h5, > ol, > ul, > div, > table, > pre {
       margin-left: 100px !important;
       margin-right: 100px !important;
     }
