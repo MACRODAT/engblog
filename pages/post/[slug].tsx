@@ -456,7 +456,7 @@ const PostDetails = ({ post} : {post : any}) => {
             ''
           }
           <span className="text-center md:text-left p-0 m-0">
-            <h1 className='text-3xl ita md:text-5xl lg:text-6xl my-5 md:mb-4'>{post.name}</h1>
+            <h1 className='text-5xl ita md:text-6xl lg:text-6xl my-5 md:mb-4'>{post.name}</h1>
             <h2 className='text-xl md:text-2xl italic'>
               <span className="text-lg md:text-xl font-light opacity-50 m-0 mx-1 p-0 not-italic">#</span> 
               {post.excerpt}
