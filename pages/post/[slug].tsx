@@ -431,14 +431,31 @@ const PostDetails = ({ post} : {post : any}) => {
                   >
           {
               showImage ?
-              <span className="flex justify-center mx-auto md:float-left md:mr-10 mb-1">
+              <span className="flex justify-center mx-auto md:float-right md:mx-10 mb-1">
                 <Image src={post.featureImage.url} width={256} height={256} style={{objectFit: "cover"}}  alt="" />
                 {/* <img className='colorize w-[20%] md:w-[30%] float-right mr-10' src={post.featureImage.url} alt='' /> */}
               </span>
               :
               ''
             }
-          <span className="text-center md:text-right p-0 m-0">
+
+          {
+              post.postdifficulty != 'none' && post.postdifficulty != '' ?
+              <button 
+                    className={theme == 'light' ? 
+                    'rounded-lg bg-slate-200/60 border border-slate-300 p-2 float-left md:mx-10 h-20'
+                    :
+                    'rounded-lg bg-slate-700/60 border border-slate-500 p-2 float-left md:mx-10 text-slate-100 h-20'
+                    }>
+                {findIcon(post.postdifficulty)}
+                <h2 className='text-md md:text-xl '>
+                  {post.postdifficulty}
+                </h2>
+              </button>
+            :
+            ''
+          }
+          <span className="text-center md:text-left p-0 m-0">
             <h1 className='text-3xl ita md:text-5xl lg:text-6xl my-5 md:mb-4'>{post.name}</h1>
             <h2 className='text-xl md:text-2xl italic'>
               <span className="text-lg md:text-xl font-light opacity-50 m-0 mx-1 p-0 not-italic">#</span> 
@@ -446,22 +463,7 @@ const PostDetails = ({ post} : {post : any}) => {
             </h2>  
             <h4 className='text-lg md:text-lg font-light opacity-50 '> Written on {finalDate}</h4>  
           </span>
-          {
-              post.postdifficulty != 'none' && post.postdifficulty != '' ?
-              <button 
-                    className={theme == 'light' ? 
-                    'rounded-lg bg-slate-200/60 border border-slate-300 p-2 float-right h-20'
-                    :
-                    'rounded-lg bg-slate-700/60 border border-slate-500 p-2 float-right text-slate-100 h-20'
-                    }>
-                {findIcon(post.postdifficulty)}
-                <h2 className='text-md md:text-xl '>
-                  {post.postdifficulty}
-                </h2>
-            </button>
-            :
-            ''
-          }
+
           {
               loggedIn && post.postdifficulty != 'NONE' ?
               <button 
