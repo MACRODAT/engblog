@@ -424,9 +424,9 @@ const PostDetails = ({ post} : {post : any}) => {
 
   return (
     <div className={theme == 'light' ? 
-                  'bg-p fg-p pb-40 pt-3 px-4 m-0 w-full container'
+                  'bg-p fg-p pb-40 pt-10 px-4 m-0 w-full container'
                   :
-                  'bg-p fg-p pb-40 pt-3 px-4 m-0 w-full container'
+                  'bg-p fg-p pb-40 pt-10 px-4 m-0 w-full container'
                 }
                   >
           {
@@ -513,6 +513,8 @@ const PostDetails = ({ post} : {post : any}) => {
             :
             ''
           }
+
+          <hr className='mb-32' />
           
 
           {/* <hr className='my-1' /> */}
