@@ -216,7 +216,7 @@ const PostDetails = ({ post} : {post : any}) => {
                   "border-r-2 border-l-2 border-sky-500 p-2 rounded-lg cursor-pointer transition duration-150"
                 )
               }
-              style={{overflow: 'auto', overflowY: 'hidden', width: '95%', maxWidth: '100%', margin: '3px', 
+              style={{overflow: 'auto', overflowY: 'hidden', maxWidth: '90%', margin: '3px', 
                       marginTop: '3px', marginBottom: theme == 'light' ? '0' : '4px', display: 'block', 
                       fontSize: Math.min(22, Math.floor(12 + (12 * screenWidth / 1200)))}}
               onClick={() => setShowCode(!showCode)}
@@ -226,7 +226,7 @@ const PostDetails = ({ post} : {post : any}) => {
                 showCode ?
                   "Hide code"
                   :
-                  "Show code"
+                  "Show " + match.toString().split(',')[1] + " code"
               }
             </div>
             :
@@ -242,7 +242,7 @@ const PostDetails = ({ post} : {post : any}) => {
                 
                 // lineProps={(line: number) => highlightLine(line, [1,2,3], props.highlightColor)}
                 showLineNumbers={numLines > 3 && screenWidth > 700}
-                customStyle={{overflow: 'auto', overflowY: 'hidden', width: '95%', maxWidth: '100%', 
+                customStyle={{overflow: 'auto', overflowY: 'hidden', maxWidth: '90%', 
                               margin: '3px', marginTop: '0', marginBottom: '15px', display: 'block', 
                               fontSize: Math.max(13,Math.min(19, Math.floor(19 * screenWidth / 1200)))}}
                 className='new-box'

@@ -41,9 +41,11 @@ export const themes = {
     light : {
         '--color-bg-s' : '#EEEEED',
         '--color-bg-ss' : '#FEFEFD',
+        '--color-bg-sl' : '#5555198a',
         '--color-bg-p' : '#FFFFFC',
         '--color-fg-p' : '#001011',
         '--color-fg-s' : '#001011',
+        '--color-fg-sl' : '#d3d3c18a',
         '--color-fg-e' : '#98CE00',
         '--color-fg-a' : '#3b738a',
         '--color-shadow' : '#757780',
@@ -52,9 +54,11 @@ export const themes = {
     dark : {
         '--color-bg-s' : '#F8FEE0',
         '--color-bg-ss' : '#1c4075',
+        '--color-bg-sl' : '#2f2904a2',
         '--color-bg-p' : '#001011',
         '--color-fg-p' : '#FFFFFC',
         '--color-fg-s' : '#0F0F0C',
+        '--color-fg-sl' : '#dfdabbe1',
         '--color-fg-e' : '#EEEEED',
         '--color-fg-a' : '#6CCFF6',
         '--color-shadow' : '#2c2d30',

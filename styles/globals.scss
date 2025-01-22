@@ -17,10 +17,12 @@
 :root {
   --color-bg-p: #FFFFFC;
   --color-bg-s: #EEEEED;
+  --color-bg-sl: #5555198a;
   --color-bg-ss: #FEFEFD;
   --color-fg-p: #001011;
   --color-fg-e: #98CE00;
   --color-fg-a: #6CCFF6;
+  --color-fg-sl: #d3d3c18a;
   --color-shadow: #757780;
 }
 
@@ -64,6 +66,9 @@ body {
 .bg-s{
   background-color: var(--color-bg-s) !important;
 }
+.bg-sl{
+  background-color: var(--color-bg-sl) !important;
+}
 .bg-ss{
   background-color: var(--color-bg-ss) !important;
 }
@@ -72,6 +77,9 @@ body {
 }
 .fg-s{
   color: var(--color-fg-s) !important;
+}
+.fg-sl{
+  color: var(--color-fg-sl) !important;
 }
 .fg-e{
   color: var(--color-fg-e) !important;
@@ -306,7 +314,37 @@ ul {
     content: counter(h4-counter) ". "; /* Display the number followed by a dot */
   }
 
+  table {
+    border-collapse: collapse;
+    text-align: left;
+    margin-top: 12px;
+    width: -webkit-fill-available;
 
+      /* Styling for the header row */
+      thead th {
+        background-color: var(--color-shadow); /* Light gray background for the header */
+        color: var(--color-fg-p); /* Darker text color for contrast */
+        font-weight: bold;
+        border-bottom: 2px solid var(--color-fg-a); /* Thicker bottom border for header */
+        padding: 10px; /* Add padding for better spacing */
+      }
+
+      /* Styling for table rows */
+      tbody tr {
+        border-bottom: 1px solid var(--color-fg-p); /* Light line between rows */
+      }
+
+      tbody tr:hover {
+        background-color:  var(--color-bg-sl); /* Subtle hover effect */
+        color:  var(--color-fg-sl); /* Subtle hover effect */
+      }
+
+      /* Styling for table cells */
+      td {
+        padding: 8px; /* Spacing within cells */
+        color: var(--color-fg-p); /* Slightly muted text color */
+      }
+  }
 
 
   @media (min-width: 400px) and (max-width:1000px) {
@@ -343,7 +381,7 @@ ul {
       margin-left: 0px; /* Add space between the title and the line */
     }
 
-    p, h2, h3, h4, h5, ol, ul {
+    p, h2, h3, h4, h5, ol, ul, div, table {
       margin-left: 100px !important;
       margin-right: 100px !important;
     }
@@ -372,7 +410,7 @@ ul {
 
   h2{
     font-family: "Charm";
-    font-size: calc(24px * var(--fontSizeMultiplier));
+    font-size: calc(28px * var(--fontSizeMultiplier));
     font-weight: calc(700 * var(--fontSizeMultiplier));
     line-height: calc(32px * var(--fontSizeMultiplier));
     letter-spacing: calc(4px * var(--fontSizeMultiplier));
@@ -383,19 +421,20 @@ ul {
   h3{
     font-family: "Charm";
     text-decoration: underline;
-    font-size: calc(18px * var(--fontSizeMultiplier));
+    font-size: calc(24px * var(--fontSizeMultiplier));
     font-weight: 600;
     line-height: calc(32px * var(--fontSizeMultiplier));
     letter-spacing: calc(4px * var(--fontSizeMultiplier));
     margin-top: calc(28px * var(--fontSizeMultiplier));
     margin-bottom: calc(7px * var(--fontSizeMultiplier));
+    text-decoration: underline;
   }
 
   h4 {
     font-family: "Charm";
-    font-size: calc(16px * var(--fontSizeMultiplier));
+    font-size: calc(20px * var(--fontSizeMultiplier));
     font-weight: 500;
-    text-decoration: underline;
+    text-decoration: dashed;
     line-height: calc(22px * var(--fontSizeMultiplier));
     letter-spacing: calc(3px * var(--fontSizeMultiplier));
     margin-top: calc(18px * var(--fontSizeMultiplier));
