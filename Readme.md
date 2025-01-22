@@ -1,1 +1,1 @@
-\nMy blog
+\nEntry 2
