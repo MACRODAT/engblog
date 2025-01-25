@@ -1,11 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import PostCard from '../components/Postcard';
-import { compileNavigationAlgo } from '../services';
-import Desk from '../public/desk.jpg';
+import Desk from '../public/desk.png';
 
 //  @ts-nocheck
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function Home({  } : {}){
 
