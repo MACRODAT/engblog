@@ -80,7 +80,7 @@ const Header = ({scrolled, showMobile} :
 
     return (
         <div id='header'
-			className={"mr-0 w-full p-1 flex justify-around items-baseline  " + 
+			className={"mr-0 w-full pt-1 px-2 flex justify-around items-baseline  " + 
             	(scrolled ? 
 							(
 								theme == 'light' ?
