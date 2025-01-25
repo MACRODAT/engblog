@@ -120,7 +120,7 @@ const PostDetails = ({ post} : {post : any}) => {
 
   let convertToId = (content_: any) => {
     try{
-      console.log(content_)
+      // console.log(content_)
       let txt = content_[0];
       return txt.toLowerCase() // Convert to lowercase
           .trim() // Remove leading/trailing whitespace

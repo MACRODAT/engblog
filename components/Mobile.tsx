@@ -37,7 +37,6 @@ const MobileMenu = ({hideMobile} : {hideMobile: any}) => {
   }, [nav_]);
   
   let compiler = () => {
-    console.log(nav_);
     if (nav === null || nav === undefined){
       return;
     }else{
@@ -68,7 +67,6 @@ const MobileMenu = ({hideMobile} : {hideMobile: any}) => {
           }
           let link = linkDict.get(el);
           let children = findAllNodes(el);
-          console.log(link, children);
           addMenu(el, parent, link);
           children.map((el2) => {
             return builder(el2,el);
@@ -89,6 +87,7 @@ const MobileMenu = ({hideMobile} : {hideMobile: any}) => {
         ];
 
         const addMenu = (menu: string, parentName:string, link:string) => {
+          link = "/post/" + link; 
           if (parentName) {
             // Find the parent menu
             const parentMenu = menusSimple.find(item => item.name === parentName);
@@ -100,7 +99,7 @@ const MobileMenu = ({hideMobile} : {hideMobile: any}) => {
               // Add the new menu to submenus
               parentMenu.submenus.push({name: menu, href: link});
             } else {
-              console.warn(`Parent menu "${parentName}" not found. Adding "${menu}" as a root menu.`);
+              // console.warn(`Parent menu "${parentName}" not found. Adding "${menu}" as a root menu.`);
               menusSimple.push({name: menu, href: link});
             }
           } else {
@@ -146,7 +145,7 @@ const MobileMenu = ({hideMobile} : {hideMobile: any}) => {
             {menusSimpler.map((menu, index) => (
               <li key={index} className=''>
                 <div className="flex items-center justify-between px-4 py-2 rounded-md bg-p hover:bg-s hover:fg-ss">
-                  <a href={"/post/"+menu.href} className="block w-full">
+                  <a href={menu.href} className="block w-full">
                     {menu.name}
                   </a>
                   {menu.submenus && (
