@@ -15,11 +15,11 @@ export default function Home({  } : {}){
    
       <div className='self-center p-2 my-10 h-full clearfix
                       drop-shadow-xl bg-p fg-p mt-10'>
-        <div className="float-left mr-4 mb-1">
+        <div className="md:float-left place-self-center mr-4 mb-1">
           <Image src={Desk} width={256} height={256} style={{objectFit: "cover"}}  alt="" />
         </div>
         <p className='text-md md:text-xl'>
-            <em className='font-medium not-italic'>
+            <em className='md:text-3xl ita text-2xl not-italic'>
               Welcome to my mechanical engineering blog ! 
             </em>
             <span className="ita inline-block mx-4">

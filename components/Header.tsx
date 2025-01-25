@@ -13,8 +13,8 @@ import { setLogin, setUserFromGoogleAuth } from '../store/sessionSlice';
 import { makePublicRouterInstance, Router, useRouter } from 'next/router';
 
 
-const Header = ({scrolled} : 
-					{scrolled : boolean, switchTheme : any,currentTheme : any}) => {
+const Header = ({scrolled, showMobile} : 
+					{scrolled : boolean, showMobile: any}) => {
 
 	let loggedIn_ = useSelector(state => state.auth.loggedIn);
 	let [loggedInState, setLoggedInState] = useState(loggedIn_);
@@ -98,8 +98,16 @@ const Header = ({scrolled} :
 						onClick={switchTheme}
 						className='hidden md:block mx-1 my-0 cursor-pointer hover:animate-pulse w-2'>
 						<i 	
-								className={theme=='dark' ? "fa-solid fa-sun" : "fa-solid fa-moon"}
+								className={theme=='dark' ? "fa-solid fa-bars" : "fa-solid fa-moon"}
 								onClick={switchTheme}> 
+						</i>
+				</div>
+				<div 
+						onClick={() => showMobile()}
+						className='block md:hidden w-fit mx-1 my-0 cursor-pointer hover:animate-pulse w-2'>
+						<i 	
+								className={"fa-solid fa-bars"}
+								onClick={() => showMobile()}> 
 						</i>
 				</div>
 				<h1 className={getHeaderTitleStyle()}>
@@ -108,12 +116,12 @@ const Header = ({scrolled} :
 				
 				<h3 className={ 
 						scrolled ? 
-							'flex-initial text-center font-thin p-2 \
+							'flex-initial text-lg font-thin p-2 \
 							cursor-pointer \
 							hover:ease-out hover:bg-indigo-900/50 hover:border-dashed hover:border-orange-900 hover:text-slate-50 \
 							' 
 							:  
-							('flex-initial text-center cursor-pointer p-2 m-0 \
+							('flex-initial cursor-pointer p-2 m-0 \
 							\
 							hover:ease-in  hover:border-indigo-500 \
 							'
@@ -122,6 +130,9 @@ const Header = ({scrolled} :
 											: 'hover-text-slate-50 hover:bg-sky-900')
 							)}>
 						{
+							scrolled ?	
+						
+						
 							loggedInState ? 
 							(
 								<div onClick={() => {router.push('/account')}}>
@@ -137,6 +148,8 @@ const Header = ({scrolled} :
 									</span>
 								</div>
 							)
+							:
+							""
 						}
 				</h3>
         </div>
