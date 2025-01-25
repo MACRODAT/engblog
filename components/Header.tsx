@@ -46,7 +46,7 @@ const Header = ({scrolled, showMobile} :
 			" 
 		}
 		else{
-			return "mr-10 ml-10 mt-2 md:mt-1 md:mb-1 ita \
+			return "mr-2 ml-2 mt-0 md:mb-1 ita \
 				uppercase text-xl md:text-2xl lg:text-4xl underline \
 				decoration-double font-thin \
 				basis-7/12 \
@@ -80,7 +80,7 @@ const Header = ({scrolled, showMobile} :
 
     return (
         <div id='header'
-			className={"mr-0 p-0 w-full pl-2 pr-2 flex justify-center items-center content-center " + 
+			className={"mr-0 w-full p-1 flex justify-around items-baseline  " + 
             	(scrolled ? 
 							(
 								theme == 'light' ?
@@ -98,15 +98,15 @@ const Header = ({scrolled, showMobile} :
 						onClick={switchTheme}
 						className='hidden md:block mx-1 my-0 cursor-pointer hover:animate-pulse w-2'>
 						<i 	
-								className={theme=='dark' ? "fa-solid fa-bars" : "fa-solid fa-moon"}
+								className={theme=='dark' ? "fa-solid fa-sun" : "fa-solid fa-moon"}
 								onClick={switchTheme}> 
 						</i>
 				</div>
 				<div 
 						onClick={() => showMobile()}
-						className='block md:hidden w-fit mx-1 my-0 cursor-pointer hover:animate-pulse w-2'>
+						className='block md:hidden w-fit mx-1 my-0 self-stretch cursor-pointer hover:animate-pulse w-2 flex items-center justify-center'>
 						<i 	
-								className={"fa-solid fa-bars"}
+								className={"block fa-solid fa-bars"}
 								onClick={() => showMobile()}> 
 						</i>
 				</div>
@@ -137,7 +137,7 @@ const Header = ({scrolled, showMobile} :
 							(
 								<div onClick={() => {router.push('/account')}}>
 									<i className='fa fa-md fa-person-shelter mx-2' />
-									My account
+									<span className='hidden md:inline'>My account</span>
 								</div>
 							):
 							(
