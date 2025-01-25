@@ -4,14 +4,14 @@ import { faBars, faTimes, faChevronDown, faChevronRight, faClose } from '@fortaw
 
 const MobileMenu = ({hideMobile} : {hideMobile: any}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [expandedMenu, setExpandedMenu] = useState(null);
+  const [expandedMenu, setExpandedMenu] = useState(-1);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
   const toggleSubmenu = (index: number) => {
-    setExpandedMenu(expandedMenu === index ? null : index);
+    setExpandedMenu(index);
   };
 
   const menus = [
