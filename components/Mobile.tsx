@@ -143,7 +143,7 @@ const MobileMenu = ({hideMobile} : {hideMobile: any}) => {
                   
             </li>
             {menusSimpler.map((menu, index) => (
-              <li key={index} className=''>
+              <li key={index} className='animate-slideDown'>
                 <div className="flex items-center justify-between px-4 py-2 rounded-md bg-p hover:bg-s hover:fg-ss">
                   <a href={menu.href} className="block w-full">
                     {menu.name}
@@ -158,7 +158,7 @@ const MobileMenu = ({hideMobile} : {hideMobile: any}) => {
                   )}
                 </div>
                 {menu.submenus && expandedMenu === index && (
-                  <ul className="ml-6 mt-2 space-y-2 list-none">
+                  <ul className="ml-6 mt-2 space-y-2 list-none animate-slideDown">
                     {menu.submenus.map((submenu, subIndex) => (
                       <li key={subIndex}>
                         <a
@@ -174,7 +174,7 @@ const MobileMenu = ({hideMobile} : {hideMobile: any}) => {
               </li>
             ))}
           </ul>
-        </div>
+    </div>
   );
 };
 
