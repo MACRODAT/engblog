@@ -45,7 +45,7 @@ const Layout = ({ children } : {children : any}) => {
   }, [t])
 
   const showMobile = () => {
-    setMobileMenu(true);
+    setMobileMenu(!mobilemenu);
   }
   const hideMobile = () => {
     setMobileMenu(false);
@@ -113,122 +113,121 @@ const Layout = ({ children } : {children : any}) => {
               <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Fira+Code:wght@300..700&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
         </Head>
         {
-          mobilemenu ?
-              <div className='w-screen h-screen bg-p left-0 top-0 grid m-0 p-0'>
-                <MobileMenu hideMobile={hideMobile} />  
-              </div>
-              : 
-        
-            <div className='w-full flex flex-col overflow-x-clip m-0 p-0'>
-                <div className="sticky relative top-0  m-0 p-0 z-50 w-full h-auto ">
-                    <Header scrolled={scrolled} showMobile={showMobile} />
-                </div>
-                <div className="w-full flex flex-grow min-h-screen m-0 p-0 overflow-x-clip" style={stylers}
-                          onClick={
-                                (_) => {
-                                              
-                                              if ( isSearchFocused ) {
-                                                dispatch(sf(false));
-                                              } 
-                                  }
-                                }
-                      >
-                  
-                  
-                  <div className="w-full min-h-screen overflow-x-clip" id="rooter">
-                    <div id='content' 
-                          onScroll={
-                            (e) => {
-                                // var scrollpos = (document.getElementById('content')?.scrollTop) || 0
-                                // var scrollpos = (document.getElementsByTagName('body').item(0)?.scrollTop) || 0
-                                // var scrollpos = (window.scrollY) || 0
-                                // console.log(window.scrollY)
-                                // if (scrollpos > 4 && !scrolled){
-                                //     setScrolled(true);
-                                //     // mainScreen.enter();
-                                // }else if (scrollpos < 90 && scrolled){
-                                //     setScrolled(false)
-                                // }
+          mobilemenu ? 
+          <div className={'w-screen h-screen bg-p grid m-0 p-0 fixed top-0 left-0 z-50'}>
+            <MobileMenu hideMobile={hideMobile} />  
+          </div>
+          :
+          <></>
+        }
+        <div className='w-full flex flex-col overflow-x-clip m-0 p-0'>
+            <div className="sticky relative top-0  m-0 p-0 z-50 w-full h-auto ">
+                <Header scrolled={scrolled} showMobile={showMobile} />
+            </div>
+            <div className="w-full flex flex-grow min-h-screen m-0 p-0 overflow-x-clip" style={stylers}
+                      onClick={
+                            (_) => {
+                                if ( isSearchFocused ) {
+                                  dispatch(sf(false));
+                                } 
+                              }
                             }
-                          } 
-                          className="flex flex-col space-y-0.5 overflow-x-clip
-                                    px-0 pt-10 m-0 
-                                    w-full
-                                    relative top-0 -translate-y-8 left-0
-                                    ">
-                          
-                          <div className="flex lg:flex-row flex-col flex-grow m-0 space-x-3 space-y-0.5 self-center w-full "
-                                    >
-                            {
-                              isSearchFocused ? 
-                                      <SearchPage /> 
-                                      : 
-                                      (
-                                        <div className="flex-1 lg:flex-auto grow order-last lg:order-first 
-                                                        lg:min-width-[70%] lg:w-9/12 w-full 
-                                                        h-30 lg:h-full">
-                                            {
-                                              children  
-                                            }
-                                        </div>
-                                      )
-                            }
-                            
-                            <div id='aside' className="
-                                          lg:sticky order-first lg:order-last
-                                          w-full lg:w-2/12 lg:min-w-[250px] xs:w-full sm:w-full 
-                                          lg:block hidden md:block
-                                          top-20 ml-2 mb-10 flex-grow
-                                          lg:h-screen h-min
-                                          "
-                                          onClick={(e) => e.stopPropagation()}
-                                          >
-                                  <LinkCard />
-                                  <SearchNav />
-                                  { 
-                                    showNav() && !isSearchFocused ? 
-                                      <SideNav /> : ""
-                                  }
-                                {/* <div 
-                                  // style={{width: "--webkit-fill-available"}}
-                                  className="lg:h-screen max-h-screen lg:w-fill p-2 pr-0">
-                                  
-                                </div> */}
-                            </div>
-
-                          </div>
-                          <div 
-                              id='footer' 
-                              style={{minHeight: "200px"}}
-                              className='flex-auto block fg-s mt-10 border-t-2 border-dotted
-                                        border-teal-800/40
-                                        '
-                                        >
-                            {/* <div className='lg:hidden block'>
-                                {
-                                  theme == 'dark' ? 
-                                  <i 	
-                                      
-                                      className='fa-solid fa-sun mx-3 my-0 cursor-pointer hover:animate-pulse float-right'
-                                      onClick={switchTheme}> 
-                                  </i>
-                                  :
-                                  <i className='fa-solid fa-moon mx-3 my-0 text-lg cursor-pointer hover:animate-pulse float-right' 
-                                      onClick={switchTheme}> </i>
-
-                                }
-                            </div>
-                            <h3 className='text-right mr-3 ml-2'>
-                                Made by Macrodat 2023
-                            </h3> */}
-                            <Footer />
-                          </div>
+                  >
+              
+              
+              <div className="w-full min-h-screen overflow-x-clip" id="rooter">
+                <div id='content' 
+                      onScroll={
+                        (e) => {
+                            // var scrollpos = (document.getElementById('content')?.scrollTop) || 0
+                            // var scrollpos = (document.getElementsByTagName('body').item(0)?.scrollTop) || 0
+                            // var scrollpos = (window.scrollY) || 0
+                            // console.log(window.scrollY)
+                            // if (scrollpos > 4 && !scrolled){
+                            //     setScrolled(true);
+                            //     // mainScreen.enter();
+                            // }else if (scrollpos < 90 && scrolled){
+                            //     setScrolled(false)
+                            // }
+                        }
+                      } 
+                      className="flex flex-col space-y-0.5 overflow-x-clip
+                                px-0 pt-10 m-0 
+                                w-full
+                                relative top-0 -translate-y-8 left-0
+                                ">
+                      
+                      <div className="flex lg:flex-row flex-col flex-grow m-0 space-x-3 space-y-0.5 self-center w-full "
+                                >
+                        {
+                          isSearchFocused ? 
+                                  <SearchPage /> 
+                                  : 
+                                  (
+                                    <div className="flex-1 lg:flex-auto grow order-last lg:order-first 
+                                                    lg:min-width-[70%] lg:w-9/12 w-full 
+                                                    h-30 lg:h-full">
+                                        {
+                                          children  
+                                        }
+                                    </div>
+                                  )
+                        }
+                        
+                        <div id='aside' className="
+                                      lg:sticky order-first lg:order-last
+                                      w-full lg:w-2/12 lg:min-w-[250px] xs:w-full sm:w-full 
+                                      lg:block hidden md:block
+                                      top-20 ml-2 mb-10 flex-grow
+                                      lg:h-screen h-min
+                                      "
+                                      onClick={(e) => e.stopPropagation()}
+                                      >
+                              <LinkCard />
+                              <SearchNav />
+                              { 
+                                showNav() && !isSearchFocused ? 
+                                  <SideNav /> : ""
+                              }
+                            {/* <div 
+                              // style={{width: "--webkit-fill-available"}}
+                              className="lg:h-screen max-h-screen lg:w-fill p-2 pr-0">
+                              
+                            </div> */}
+                        </div>
 
                       </div>
-                    </div>
+                      <div 
+                          id='footer' 
+                          style={{minHeight: "200px"}}
+                          className='flex-auto block fg-s mt-10 border-t-2 border-dotted
+                                    border-teal-800/40
+                                    '
+                                    >
+                        {/* <div className='lg:hidden block'>
+                            {
+                              theme == 'dark' ? 
+                              <i 	
+                                  
+                                  className='fa-solid fa-sun mx-3 my-0 cursor-pointer hover:animate-pulse float-right'
+                                  onClick={switchTheme}> 
+                              </i>
+                              :
+                              <i className='fa-solid fa-moon mx-3 my-0 text-lg cursor-pointer hover:animate-pulse float-right' 
+                                  onClick={switchTheme}> </i>
+
+                            }
+                        </div>
+                        <h3 className='text-right mr-3 ml-2'>
+                            Made by Macrodat 2023
+                        </h3> */}
+                        <Footer />
+                      </div>
+
+                  </div>
                 </div>
             </div>
-        }
+        </div>
     </>
   )
 }

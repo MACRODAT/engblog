@@ -125,7 +125,7 @@ const MobileMenu = ({hideMobile} : {hideMobile: any}) => {
   }
 
   return (
-    <div className="absolute top-12 left-0 w-full bg-p fg-p shadow-lg rounded-lg p-4 z-50">
+    <div className="fixed top-12 left-0 w-full bg-p fg-p shadow-lg rounded-lg p-4 z-50">
           <ul className="space-y-2 md:p-10 p-4 list-none w-full">
             <li key={-1} className=''>
               <div className="flex items-center justify-center px-4 py-2 rounded-md bg-p hover:bg-s hover:fg-ss">
