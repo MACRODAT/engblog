@@ -422,6 +422,8 @@ const PostDetails = ({ post} : {post : any}) => {
   const parts = formattedDate.split(", ");
   const finalDate = `${parts[0]} ${parts[1].replace(/\//g, "/")}`;
 
+  console.log(post.postdifficulty)
+
   return (
     <div className={theme == 'light' ? 
                   'bg-p fg-p pb-40 pt-10 px-4 m-0 w-full container'
@@ -443,7 +445,7 @@ const PostDetails = ({ post} : {post : any}) => {
             }
 
           {
-              post.postdifficulty != 'none' && post.postdifficulty != '' ?
+              post.postdifficulty != null && post.postdifficulty != 'none' && post.postdifficulty != '' ?
               <button 
                     className={theme == 'light' ? 
                     'rounded-lg bg-slate-200/60 border border-slate-300 p-2 float-left md:mx-10 h-20'

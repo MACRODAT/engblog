@@ -151,13 +151,13 @@ const Layout = ({ children } : {children : any}) => {
                             // }
                         }
                       } 
-                      className="flex flex-col space-y-0.5 overflow-x-clip
+                      className="flex flex-col overflow-x-clip
                                 px-0 pt-10 m-0 
                                 w-full
                                 relative top-0 -translate-y-8 left-0
                                 ">
                       
-                      <div className="flex lg:flex-row flex-col flex-grow m-0 space-x-3 space-y-0.5 self-center w-full "
+                      <div className="flex lg:flex-row flex-col flex-grow m-0 self-center w-full "
                                 >
                         {
                           isSearchFocused ? 
@@ -177,8 +177,8 @@ const Layout = ({ children } : {children : any}) => {
                         <div id='aside' className="
                                       lg:sticky order-first lg:order-last
                                       w-full lg:w-2/12 lg:min-w-[250px] xs:w-full sm:w-full 
-                                      lg:block hidden md:block
-                                      top-20 ml-2 mb-10 flex-grow
+                                      hidden md:block
+                                      top-20 m-1 flex-grow
                                       lg:h-screen h-min
                                       "
                                       onClick={(e) => e.stopPropagation()}
