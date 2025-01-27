@@ -432,7 +432,10 @@ const PostDetails = ({ post} : {post : any}) => {
           {
               showImage ?
               <span className="flex justify-center mx-auto md:float-right md:mx-10 mb-1">
-                <Image src={post.featureImage.url} width={256} height={256} style={{objectFit: "cover"}}  alt="" />
+                <Image 
+                    src={post.featureImage.url} 
+                    width={256} height={256} 
+                    style={{objectFit: "cover"}}  alt="" />
                 {/* <img className='colorize w-[20%] md:w-[30%] float-right mr-10' src={post.featureImage.url} alt='' /> */}
               </span>
               :
