@@ -1,3 +1,5 @@
+# Table of contents  
+
 # Process Engineering Terms
 
 ## Flash distillation
@@ -28,3 +30,23 @@ It is also possible to fix the pressure and increase the temperature of the liqu
 ## Sulfuric acid
 
 Sulfuric Acid $$ H_2 SO_4 $$ is an acid which is corrosive, oily in nature. It is also hygroscopic and an oxidizing agent. As such, it may be used for example for carbonization of wood (i.e. removing water content).
+
+## Benzene-Toluene Mixture
+
+Contains:
+- Benzene ($ C_6 H_6 $)
+- Toluene ($ C_7 H_8 $)
+
+- Solvent Applications – The mixture is widely used as an industrial solvent for paints, coatings, adhesives, and inks.
+- Octane Booster in Fuels – It improves gasoline performance by increasing octane rating.
+- Chemical Synthesis – Used as a raw material in the production of dyes, detergents, plastics, and pharmaceuticals.
+- Extraction Process – Used in refining processes and laboratory applications for separating substances based on solubility.
+
+This mixture takes advantage of benzene’s high volatility and toluene’s better solvency properties, making it a versatile industrial and chemical reagent.
+
+
+
+
+
+
+
