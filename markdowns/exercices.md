@@ -105,7 +105,15 @@ end
 
 ### Example: Calculation for Benzene
 
+Benzene $ C_6 H_6 $ is an example of an aromatic, we can then use the constants given by the table to calculate the critical temperature:
 
+```matlab
+NokayCriticalTemperature(1.057, 0.22732, 0.669286, 0.885, 353.3)
+
+ans =
+
+  562.8284
+```
 
 # Appendices
 
