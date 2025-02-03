@@ -160,7 +160,7 @@ export default function SideNav(){
                 p-2 m-1 text-center
                 right-0 mr-0
                 w-full'
-        >
+      >
             {
               (nav === null || nav === undefined) ? '...' : (
                 <ul className='marker:text-sky-700 transition-all p-1 ease-in duration-150'>
