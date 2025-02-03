@@ -8,6 +8,8 @@ Distillation is the separation of a liquid mixture into its various components.
 
 ### Description
 
+![benzene](/2.png)
+
 Imagine a mixture of two liquids. Say, for example, *Benzene-Toluene*. See info about this mixture [here](https://theengblog.vercel.app/post/processengineeringterms#benzene-toluene-mixture)
 
 Let's list the boiling points:
@@ -22,7 +24,6 @@ As such, it is very convenient to plot the phase diagram of this composition, wh
 
 Also, note that A is the less volatile substance and B is the more volatile substance, as it evaporates sooner.
 
-![benzene](2.png)
 
 ### Distillation through phase diagram
 
@@ -79,6 +80,7 @@ end
 
 ### Results
 
-![Distillation Process](/DistillationResults.png)
 Red:plotDiff(0.8,0.1,10,10,[1 0 0]);
 Green:plotDiff(0.8,0.1,10,3);
+
+![Distillation Process](/DistillationResults.png)
