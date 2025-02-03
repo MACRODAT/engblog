@@ -1,4 +1,4 @@
-#tableofcontents
+# Table of contents  
 
 # Distillation
 
@@ -79,6 +79,6 @@ end
 
 ### Results
 
-![](DistillationResults.png)
+![Distillation Process](/DistillationResults.png)
 Red:plotDiff(0.8,0.1,10,10,[1 0 0]);
 Green:plotDiff(0.8,0.1,10,3);
