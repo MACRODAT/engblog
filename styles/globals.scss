@@ -418,6 +418,7 @@ ul {
 
   h2{
     font-family: "Charm";
+    text-decoration: underline;
     font-size: calc(28px * var(--fontSizeMultiplier));
     font-weight: calc(700 * var(--fontSizeMultiplier));
     line-height: calc(32px * var(--fontSizeMultiplier));
@@ -428,19 +429,19 @@ ul {
   }
 
   h3{
+    display: inline;
     font-family: "Charm";
-    text-decoration: underline;
     font-size: calc(24px * var(--fontSizeMultiplier));
     font-weight: 600;
     line-height: calc(32px * var(--fontSizeMultiplier));
     letter-spacing: calc(4px * var(--fontSizeMultiplier));
     margin-top: calc(32px * var(--fontSizeMultiplier));
     margin-bottom: calc(12px * var(--fontSizeMultiplier));
-    text-decoration: underline;
     scroll-margin-top: var(--scroll-margin-top);
   }
 
   h4 {
+    display: inline;
     font-family: "Charm";
     font-size: calc(20px * var(--fontSizeMultiplier));
     font-weight: 500;
@@ -467,6 +468,7 @@ ul {
 
 
   p{
+    display: inline-block;
     font-family:  'Fira Code', Courier, monospace !important;
     margin-bottom: 14px;
     line-height: 1.4;
