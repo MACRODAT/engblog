@@ -301,15 +301,15 @@ const PostDetails = ({ post} : {post : any}) => {
                     className={
                       theme == 'light' ?
                       "rounded-lg drop-shadow-lg \
-                                block float-left my-4 ml-1 mr-3 hover:drop-shadow-2xl \
+                                block md:float-left my-4 ml-1 mr-3 hover:drop-shadow-2xl \
                                 max-w-[50%]" 
                       :
                       (transparentImage ?
-                      "invert float-left my-4 ml-5 mr-1 hover:drop-shadow-3xl-h\
+                      "invert block md:float-left my-4 ml-5 mr-1 hover:drop-shadow-3xl-h\
                                 max-w-[60%]" 
                       :
                       "rounded-lg drop-shadow-3xl \
-                                float-left my-4 ml-5 mr-1 hover:drop-shadow-3xl-h transition duration-150 ease-in \
+                                block md:float-left my-4 ml-5 mr-1 hover:drop-shadow-3xl-h transition duration-150 ease-in \
                                 max-w-[50%]" 
                       )
                     }
