@@ -303,7 +303,8 @@ ul {
   }
 
   h3::before {
-    content: counter(section, upper-roman) "." counter(subsection, decimal) "." counter(subsubsection, lower-alpha) " "; /* I.1.a format */
+    // content: counter(section, upper-roman) "." counter(subsection, decimal) "." counter(subsubsection, lower-alpha) " "; /* I.1.a format */
+    content: counter(subsubsection, upper-alpha) "> "; /* I.1.a format */
   }
 
   h4 {
@@ -354,6 +355,61 @@ ul {
     
     font-size: calc(14px * var(--fontSizeMultiplier));
     font-weight: calc(250 * var(--fontSizeMultiplier));
+
+    
+  }
+
+  @media (max-width: 1000px) {
+
+    h1 {
+      font-family: "Charm";
+      text-decoration: underline;
+      font-size: calc(26px * var(--fontSizeMultiplier));
+      font-weight: calc(700 * var(--fontSizeMultiplier));
+      line-height: calc(26px * var(--fontSizeMultiplier));
+      letter-spacing: calc(3px * var(--fontSizeMultiplier));
+      margin-top: calc(26px * var(--fontSizeMultiplier));
+      margin-bottom: calc(10px * var(--fontSizeMultiplier));
+
+      // border-bottom: 1px dotted var(--color-fg-p);
+      cursor: pointer;
+      scroll-margin-top: var(--scroll-margin-top);
+    }
+
+    h2{
+      font-family: "Charm";
+      font-size: calc(18px * var(--fontSizeMultiplier));
+      font-weight: calc(600 * var(--fontSizeMultiplier));
+      line-height: calc(20px * var(--fontSizeMultiplier));
+      letter-spacing: calc(2px * var(--fontSizeMultiplier));
+      margin-top: calc(20px * var(--fontSizeMultiplier));
+      margin-bottom: calc(8px * var(--fontSizeMultiplier));
+      scroll-margin-top: var(--scroll-margin-top);
+    }
+
+    h3{
+      font-family: "Charm";
+      font-size: calc(16px * var(--fontSizeMultiplier));
+      font-weight: 550;
+      line-height: calc(18px * var(--fontSizeMultiplier));
+      letter-spacing: calc(2.5px * var(--fontSizeMultiplier));
+      margin-top: calc(10px * var(--fontSizeMultiplier));
+      margin-bottom: calc(6px * var(--fontSizeMultiplier));
+      scroll-margin-top: var(--scroll-margin-top);
+    }
+
+    h4 {
+      display: inline;
+      font-family: "Charm";
+      font-size: calc(20px * var(--fontSizeMultiplier));
+      font-weight: 500;
+      text-decoration: dashed;
+      line-height: calc(22px * var(--fontSizeMultiplier));
+      letter-spacing: calc(3px * var(--fontSizeMultiplier));
+      margin-top: calc(20px * var(--fontSizeMultiplier));
+      margin-bottom: calc(8px * var(--fontSizeMultiplier));
+      scroll-margin-top: var(--scroll-margin-top);
+    }
   }
 
   @media (min-width: 1000px) {
@@ -392,66 +448,65 @@ ul {
       margin-right: 100px !important;
     }
 
+    
+    h1 {
+      font-family: "Charm";
+      font-size: calc(32px * var(--fontSizeMultiplier));
+      font-weight: calc(900 * var(--fontSizeMultiplier));
+      line-height: calc(32px * var(--fontSizeMultiplier));
+      letter-spacing: calc(4px * var(--fontSizeMultiplier));
+      margin-top: calc(38px * var(--fontSizeMultiplier));
+      margin-bottom: calc(15px * var(--fontSizeMultiplier));
+
+      // border-bottom: 1px dotted var(--color-fg-p);
+      cursor: pointer;
+      scroll-margin-top: var(--scroll-margin-top);
+    }
+
+    h1:hover{
+      filter: opacity(0.5);
+    }
+
+    h2{
+      font-family: "Charm";
+      text-decoration: underline;
+      font-size: calc(28px * var(--fontSizeMultiplier));
+      font-weight: calc(700 * var(--fontSizeMultiplier));
+      line-height: calc(32px * var(--fontSizeMultiplier));
+      letter-spacing: calc(4px * var(--fontSizeMultiplier));
+      margin-top: calc(38px * var(--fontSizeMultiplier));
+      margin-bottom: calc(10px * var(--fontSizeMultiplier));
+      scroll-margin-top: var(--scroll-margin-top);
+    }
+
+    h3{
+      display: inline;
+      font-family: "Charm";
+      font-size: calc(24px * var(--fontSizeMultiplier));
+      font-weight: 600;
+      line-height: calc(32px * var(--fontSizeMultiplier));
+      letter-spacing: calc(4px * var(--fontSizeMultiplier));
+      margin-top: calc(42px * var(--fontSizeMultiplier));
+      margin-bottom: calc(12px * var(--fontSizeMultiplier));
+      scroll-margin-top: var(--scroll-margin-top);
+    }
+
+    h4 {
+      display: inline;
+      font-family: "Charm";
+      font-size: calc(20px * var(--fontSizeMultiplier));
+      font-weight: 500;
+      text-decoration: dashed;
+      line-height: calc(22px * var(--fontSizeMultiplier));
+      letter-spacing: calc(3px * var(--fontSizeMultiplier));
+      margin-top: calc(34px * var(--fontSizeMultiplier));
+      margin-bottom: calc(10px * var(--fontSizeMultiplier));
+      scroll-margin-top: var(--scroll-margin-top);
+    }
+
   }
 
 
-  h1 {
-    font-family: "Charm";
-    font-size: calc(32px * var(--fontSizeMultiplier));
-    font-weight: calc(900 * var(--fontSizeMultiplier));
-    line-height: calc(32px * var(--fontSizeMultiplier));
-    letter-spacing: calc(4px * var(--fontSizeMultiplier));
-    margin-top: calc(38px * var(--fontSizeMultiplier));
-    margin-bottom: calc(15px * var(--fontSizeMultiplier));
-
-    // border-bottom: 1px dotted var(--color-fg-p);
-    cursor: pointer;
-    margin-top: 30px;
-    margin-bottom: 30px;
-
-    scroll-margin-top: var(--scroll-margin-top);
-  }
-
-  h1:hover{
-    filter: opacity(0.5);
-  }
-
-  h2{
-    font-family: "Charm";
-    text-decoration: underline;
-    font-size: calc(28px * var(--fontSizeMultiplier));
-    font-weight: calc(700 * var(--fontSizeMultiplier));
-    line-height: calc(32px * var(--fontSizeMultiplier));
-    letter-spacing: calc(4px * var(--fontSizeMultiplier));
-    margin-top: calc(38px * var(--fontSizeMultiplier));
-    margin-bottom: calc(10px * var(--fontSizeMultiplier));
-    scroll-margin-top: var(--scroll-margin-top);
-  }
-
-  h3{
-    display: inline;
-    font-family: "Charm";
-    font-size: calc(24px * var(--fontSizeMultiplier));
-    font-weight: 600;
-    line-height: calc(32px * var(--fontSizeMultiplier));
-    letter-spacing: calc(4px * var(--fontSizeMultiplier));
-    margin-top: calc(32px * var(--fontSizeMultiplier));
-    margin-bottom: calc(12px * var(--fontSizeMultiplier));
-    scroll-margin-top: var(--scroll-margin-top);
-  }
-
-  h4 {
-    display: inline;
-    font-family: "Charm";
-    font-size: calc(20px * var(--fontSizeMultiplier));
-    font-weight: 500;
-    text-decoration: dashed;
-    line-height: calc(22px * var(--fontSizeMultiplier));
-    letter-spacing: calc(3px * var(--fontSizeMultiplier));
-    margin-top: calc(28px * var(--fontSizeMultiplier));
-    margin-bottom: calc(10px * var(--fontSizeMultiplier));
-    scroll-margin-top: var(--scroll-margin-top);
-  }
 
   blockquote {
     p {
@@ -483,29 +538,6 @@ ul {
     margin: 0;
   }
 
-  // p::first-letter {
-  //   // font-size: 105%;
-  //   // float: left;
-  //   // font-weight: 600;
-  //   // font-style: italic;
-  //   // margin-right: 0px;
-  //   // padding: 0;
-  //   // margin-left: 3px;
-  //   // margin-top: 8px;
-
-  // }
-
-  // code {
-  //   background-color: var(--color-code-bg);
-  //   border: 1px dashed var(--color-bg-s);
-  //   padding: 5px;
-  //   margin: 14px;
-  //   display: block !important;
-  //   // filter: brightness(110%);
-  //   float:left !important;
-  //   width: 100% !important;
-  //   overflow: hidden !important;
-  // }
 
   ul {
     list-style-type: disc;

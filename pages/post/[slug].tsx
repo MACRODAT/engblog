@@ -302,15 +302,15 @@ const PostDetails = ({ post} : {post : any}) => {
                       theme == 'light' ?
                       "rounded-lg drop-shadow-lg \
                                 block md:float-left my-4 ml-1 mr-3 lg:m-5 hover:drop-shadow-2xl \
-                                max-w-[50%]" 
+                                max-w-[100%]" 
                       :
                       (transparentImage ?
                       "invert block md:float-left my-4 ml-5 mr-1lg:m-5 hover:drop-shadow-3xl-h\
-                                max-w-[60%]" 
+                                max-w-[100%]" 
                       :
                       "rounded-lg drop-shadow-3xl \
                                 block md:float-left my-4 ml-5 mr-1lg:m-5 hover:drop-shadow-3xl-h transition duration-150 ease-in \
-                                max-w-[50%]" 
+                                max-w-[100%]" 
                       )
                     }
                     {...otherprops} />
