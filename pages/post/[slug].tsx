@@ -218,15 +218,15 @@ const PostDetails = ({ post} : {post : any}) => {
               className={
                 theme == 'light' ?
                 ( showCode ?
-                  "border-r-2 border-l-2 border-pink-500 bg-pink-500/10 p-2 rounded-t-lg cursor-pointer transition duration-150 mb-0 md:ml-5"
+                  "border-r-2 border-l-2 border-pink-500 bg-pink-500/10 p-2 cursor-pointer transition duration-150 mb-0 md:ml-5"
                   :
-                  "border-r-2 border-l-2 border-sky-500 p-2 rounded-lg cursor-pointer transition duration-150 w-64"
+                  "border-r-2 border-l-2 border-sky-500 p-2 cursor-pointer transition duration-150 w-64"
                 )
                 :
                 ( showCode ?
-                  "border-r-2 border-l-2 border-pink-500 bg-pink-500/10 p-2 rounded-t-lg cursor-pointer transition duration-150 mb-0"
+                  "border-r-2 border-l-2 border-pink-500 bg-pink-500/10 p-2 cursor-pointer transition duration-150 mb-0"
                   :
-                  "border-r-2 border-l-2 border-sky-500 p-2 rounded-lg cursor-pointer transition duration-150"
+                  "border-r-2 border-l-2 border-sky-500 p-2 cursor-pointer transition duration-150"
                 )
               }
               style={{overflow: 'auto', overflowY: 'hidden',  width: '100%', maxWidth: '100%', margin: '3px', 
@@ -300,16 +300,16 @@ const PostDetails = ({ post} : {post : any}) => {
 
                     className={
                       theme == 'light' ?
-                      "rounded-lg drop-shadow-lg \
-                                block md:float-left my-4 ml-1 mr-3 lg:m-5 hover:drop-shadow-2xl \
+                      " \
+                                block md:float-left my-4 ml-1 mr-3 lg:m-5  \
                                 max-w-[100%]" 
                       :
                       (transparentImage ?
-                      "invert block md:float-left my-4 ml-5 mr-1lg:m-5 hover:drop-shadow-3xl-h\
+                      "invert block md:float-left my-4 ml-1 mr-1 lg:m-5 \
                                 max-w-[100%]" 
                       :
-                      "rounded-lg drop-shadow-3xl \
-                                block md:float-left my-4 ml-5 mr-1lg:m-5 hover:drop-shadow-3xl-h transition duration-150 ease-in \
+                      " \
+                                block md:float-left my-4 ml-1 mr-1 lg:m-5  \
                                 max-w-[100%]" 
                       )
                     }

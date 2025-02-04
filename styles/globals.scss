@@ -410,6 +410,16 @@ ul {
       margin-bottom: calc(8px * var(--fontSizeMultiplier));
       scroll-margin-top: var(--scroll-margin-top);
     }
+
+    p{
+      display: inline-block;
+      font-family:  'Fira Code', Courier, monospace !important;
+      margin-bottom: 14px;
+      line-height: 1.4;
+      text-align: left;
+      position: relative;
+      font-size: 14px;
+    }
   }
 
   @media (min-width: 1000px) {
@@ -451,6 +461,7 @@ ul {
     
     h1 {
       font-family: "Charm";
+      text-decoration: underline;
       font-size: calc(32px * var(--fontSizeMultiplier));
       font-weight: calc(900 * var(--fontSizeMultiplier));
       line-height: calc(32px * var(--fontSizeMultiplier));
@@ -469,7 +480,6 @@ ul {
 
     h2{
       font-family: "Charm";
-      text-decoration: underline;
       font-size: calc(28px * var(--fontSizeMultiplier));
       font-weight: calc(700 * var(--fontSizeMultiplier));
       line-height: calc(32px * var(--fontSizeMultiplier));
@@ -504,6 +514,15 @@ ul {
       scroll-margin-top: var(--scroll-margin-top);
     }
 
+    p{
+      display: inline-block;
+      font-family:  'Fira Code', Courier, monospace !important;
+      margin-bottom: 14px;
+      line-height: 1.4;
+      text-align: left;
+      position: relative;
+    }
+
   }
 
 
@@ -519,16 +538,6 @@ ul {
     margin-top: calc(4px * var(--fontSizeMultiplier));
     margin-bottom: 4px;
     margin-left: 10px;
-  }
-
-
-  p{
-    display: inline-block;
-    font-family:  'Fira Code', Courier, monospace !important;
-    margin-bottom: 14px;
-    line-height: 1.4;
-    text-align: left;
-    position: relative;
   }
 
   p.hint::first-letter{
