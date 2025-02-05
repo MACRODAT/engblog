@@ -8,8 +8,6 @@ Distillation is the separation of a liquid mixture into its various components.
 
 ### Description
 
-![benzene](/2.png)
-
 Imagine a mixture of two liquids. Say, for example, *Benzene-Toluene*. See info about this mixture [here](https://theengblog.vercel.app/post/processengineeringterms#benzene-toluene-mixture)
 
 Let's list the boiling points:
@@ -24,6 +22,7 @@ As such, it is very convenient to plot the phase diagram of this composition, wh
 
 Also, note that A is the less volatile substance and B is the more volatile substance, as it evaporates sooner.
 
+![benzene](2.png)
 
 ### Distillation through phase diagram
 
@@ -51,6 +50,74 @@ Heating the mixture to a higher temperature results in less fine of a mixture, w
 So there is a balance to be achieved through tuning each of these factors.
 
 ## Partial Pressure and composition laws
+
+Each component of a mixture of vapors exerts a "partial" pressure which is defined as the *the same pressure it would exert if it occupied the same volume as the mixture and at the same temperature.*
+
+**Dalton's law** states that the total pressure is the sum of all the partial pressures:
+
+$$
+    P = \sum{P_i}
+$$
+
+But, for an ideal gas, the pressure of each gas is proportional to its molar fraction:
+
+$$
+    P_i = y_i * P
+$$
+
+Also, an ideal mixture is one where there is uniform mixing of all components, and where each gas behaves independently, following Dalton's law.
+For such a mixture, we can apply Raoult's law:
+
+$$
+    P_i = x_i * P_i^*
+$$
+
+where $ P_i^* $ is the vapor pressure of that component at the given temperature.
+
+Also note, that Raoult's law is replaced by Henry's constant for very low or very high $ x_i $. Since we are rarely interested in those values, this won't be discussed further.
+
+## Examples and exercices
+
+*Please consult Coulson's and Richardson Chemical Engineering Volume 2, chapter 11, pages 548-552.*
+
+I will provide only one example.
+
+The vapour pressures of n-heptane and toluene at 373 K are 106 and 73.7 kN/m2 respectively.
+What are the mole fractions of n-heptane in the vapour and in the liquid phase at 373 K if the total
+pressure is 101.3 kN/m2?
+
+```matlab
+syms x;
+eqn = x*106 + (1-x)*73.7 == 101.3;
+sol = solve(eqn, x);
+x_sol = sol * 106 / 101.3; 
+
+fprintf("The molar fraction in vapor phase is :")
+disp(double(sol))
+fprintf("The molar fraction in liquid phase is :")
+disp(double(x_sol))
+
+```
+
+## Relative volatility
+
+The volatility of a component in a mixture is defined as $ P_a / x_a $. Thus, the relative volatility $ \alpha $ is :
+
+$$
+ \alpha = \frac{P_a * x_b}{P_b * x_a}
+$$
+
+A simple rearrangement with Dalton's law gives:
+
+$$
+ y_a / y_b = \alpha * \frac{x_a}{x_b}
+$$
+
+Intuitively, the higher the relative volatility, the higher the distillation purity. Indeed, for an ideal mixture:
+
+$$
+\alpha = \frac{P_a^*}{P_b^*}
+$$
 
 # Distillation types
 
@@ -80,7 +147,6 @@ end
 
 ### Results
 
+![Distillation Process](/DistillationResults.png)
 Red:plotDiff(0.8,0.1,10,10,[1 0 0]);
 Green:plotDiff(0.8,0.1,10,3);
-
-![Distillation Process](/DistillationResults.png)
